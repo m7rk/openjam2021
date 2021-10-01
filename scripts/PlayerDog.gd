@@ -1,4 +1,5 @@
-extends "res://GenericDog.gd"
+extends "res://scripts/GenericDog.gd"
+
 
 func fetch_inputs():
 	if(Input.is_action_pressed("left")):

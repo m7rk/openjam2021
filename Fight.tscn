@@ -1,16 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://PlayerDog.gd" type="Script" id=2]
-[ext_resource path="res://EnemyDog.gd" type="Script" id=3]
-[ext_resource path="res://Camera.gd" type="Script" id=4]
+[ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
+[ext_resource path="res://scripts/EnemyDog.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Camera.gd" type="Script" id=4]
 [ext_resource path="res://l2.png" type="Texture" id=5]
 [ext_resource path="res://l1.png" type="Texture" id=6]
+[ext_resource path="res://ENERGY.png" type="Texture" id=7]
+[ext_resource path="res://UI.gd" type="Script" id=8]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1541.06, 10 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 [node name="Fight" type="Node2D"]
 
@@ -18,7 +20,7 @@ extents = Vector2( 1541.06, 10 )
 position = Vector2( -1.65875, 490.496 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -29,7 +31,6 @@ current = true
 script = ExtResource( 4 )
 
 [node name="BKG1" type="Sprite" parent="Camera2D"]
-position = Vector2( -2.11652, 6.34961 )
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
@@ -46,7 +47,7 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2( 8, 5 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -64,7 +65,7 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 scale = Vector2( 8, 5 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -76,29 +77,35 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Projectiles" type="Node2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-margin_right = 172.0
-margin_bottom = 14.0
-text = "ENERGY [] [] [] [] [] "
+[node name="Player" type="TextureProgress" parent="CanvasLayer/Control"]
+margin_right = 300.0
+margin_bottom = 50.0
+value = 40.0
+texture_progress = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control"]
-margin_left = 722.554
-margin_top = 4.23782
-margin_right = 894.554
-margin_bottom = 18.2378
-text = "ENERGY [] [] [] [] [] "
+[node name="Enemy" type="TextureProgress" parent="CanvasLayer/Control"]
+margin_left = 600.271
+margin_top = 0.365524
+margin_right = 900.271
+margin_bottom = 50.3655
+value = 40.0
+texture_progress = ExtResource( 7 )
+fill_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

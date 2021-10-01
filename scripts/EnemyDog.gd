@@ -1,4 +1,4 @@
-extends "res://GenericDog.gd"
+extends "res://scripts/GenericDog.gd"
 
 var move_time = 1
 
@@ -16,7 +16,6 @@ func _physics_process(delta):
 			cmds = []
 			move_time = 0.5
 
-	print(cmds)
 	do_input(-1,delta)
 	apply_forces(delta)
 	velocity = move_and_slide(velocity, Vector2.DOWN)
