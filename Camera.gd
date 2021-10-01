@@ -1,10 +1,10 @@
-extends Sprite
+extends Camera2D
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var t = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,5 +13,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	t += delta
-	position = Vector2(200 + 100 * sin(t), 200 + 100 * cos(t))
+	var targ = Vector2((get_node("../Enemy").global_position.x + get_node("../Player").global_position.x)/2, 250 )
+	global_position = lerp(global_position,targ,10*delta)
