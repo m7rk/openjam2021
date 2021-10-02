@@ -2,6 +2,7 @@ extends "res://scripts/GenericDog.gd"
 
 
 func fetch_inputs():
+
 	if(Input.is_action_pressed("left")):
 		cmds.append("left")
 	if(Input.is_action_pressed("right")):

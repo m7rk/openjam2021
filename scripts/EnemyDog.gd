@@ -3,6 +3,7 @@ extends "res://scripts/GenericDog.gd"
 var move_time = 1
 
 func _physics_process(delta):
+	
 	move_time -= delta
 	if(move_time < 0):
 		var targ = int(rand_range(0,3))
