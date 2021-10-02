@@ -4,15 +4,16 @@
 [ext_resource path="res://scripts/Ball.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 26.6854
+radius = 8.5421
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Ball" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2, -5.33333 )
+position = Vector2( -1.28416, -2.49543 )
 shape = SubResource( 1 )

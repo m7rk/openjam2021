@@ -16,7 +16,8 @@ func doAnimFinished(string):
 func transition():
 	get_node("Transitioner/AnimationPlayer").play("starttrans")
 	get_node("Transitioner/AnimationPlayer").connect("animation_finished", self, "doAnimFinished")
-
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

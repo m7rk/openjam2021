@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var frisbee = preload("res://frisbee/frisbee.tscn")
-
+var ball = preload("res://ball/ball.tscn")
 
 var hp = 100
 var velocity = Vector2.ZERO
@@ -34,13 +34,17 @@ var CLOSE_ATTACK_VEL_BOOST = 700
 var CLOSE_ATTACK_RANGE = 200
 var CLOSE_ATTACK_DAMAGE = 20
 
-var RANGED_CHARGE = 0.5
+var RANGED_CHARGE_ONE = 0.5
+var RANGED_CHARGE_TWO = 1.0
 var RANGED_COOLDOWN = 0.5
 var RANGED_LAUNCH = 0.3
 var RANGED_ATTACK_DAMAGE = 15
 
 var FRISBEE_SPEED_X = 300
 var FRISBEE_SPEED_Y = 150
+
+var BALL_SPEED_X = 200
+var BALL_SPEED_Y = 400
 
 var BACKUP_SPEED_RATIO = 0.7
 
@@ -95,7 +99,9 @@ func doInput(rev, delta):
 	cooldown -= delta
 	tryAttacks(rev,delta)
 	
-	if(charge_command == "ranged" and charge_time > RANGED_CHARGE):
+	if(charge_command == "ranged" and charge_time > RANGED_CHARGE_TWO):
+		get_node("AnimatedSprite").modulate = Color(1,0,0)
+	elif(charge_command == "ranged" and charge_time > RANGED_CHARGE_ONE):
 		get_node("AnimatedSprite").modulate = Color(1,1,0)
 	else:
 		get_node("AnimatedSprite").modulate = Color(1,1,1)
@@ -134,11 +140,18 @@ func tryRangedAttack(rev, delta):
 		charge_time += delta
 		return true
 	else:
-		if(charge_command == "ranged" and charge_time > RANGED_CHARGE):
-			var v = frisbee.instance()
+		if(charge_command == "ranged" and charge_time > RANGED_CHARGE_ONE):
+			
+			var v = null
+	
+			if(charge_time >= RANGED_CHARGE_TWO):
+				v = ball.instance()
+				v.velocity = Vector2(rev * BALL_SPEED_X,-BALL_SPEED_Y)
+			else:
+				v = frisbee.instance()
+				v.linear_velocity = Vector2(rev * FRISBEE_SPEED_X,-FRISBEE_SPEED_Y)
 			get_node("../Projectiles").add_child(v)
 			v.global_position = global_position + Vector2(rev * 90,-50)
-			v.linear_velocity = Vector2(rev * FRISBEE_SPEED_X,-FRISBEE_SPEED_Y)
 			charge_command = ""
 			charge_time = 0
 			return true

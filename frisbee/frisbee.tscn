@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 38.7057, 7.10954 )
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Frisbee" type="RigidBody2D"]
 position = Vector2( 408.708, 252.673 )
 gravity_scale = 3.0
 contacts_reported = 1
@@ -21,5 +21,5 @@ shape = SubResource( 1 )
 [node name="Frisbee" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = ExtResource( 1 )
-frame = 3
+frame = 2
 playing = true
