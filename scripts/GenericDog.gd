@@ -28,7 +28,7 @@ var damagefx = preload("res://Hit.tscn")
 # consts
 const GRAVITY = 1000
 const MOVESPEED = 2500
-const DAMPEN_FACTOR = 10
+const DAMPEN_FACTOR = 7
 
 const CLOSE_ATTACK_HIT = 0.4
 const CLOSE_ATTACK_LAUNCH = 0.5
@@ -41,9 +41,9 @@ const CLOSE_ATTACK_KNOCKBACK = 800
 const POUNCE_ATTACK_HIT = 0.2
 const POUNCE_ATTACK_LAUNCH = 0.5
 const POUNCE_ATTACK_COOLDOWN = 1.7
-const POUNCE_ATTACK_VEL_BOOSTX = 3000
+const POUNCE_ATTACK_VEL_BOOSTX = 2300
 const POUNCE_ATTACK_VEL_BOOSTY = -300
-const POUNCE_ATTACK_RANGE = 160
+const POUNCE_ATTACK_RANGE = 120
 const POUNCE_ATTACK_DAMAGE = 20
 const POUNCE_ATTACK_KNOCKBACK = 1200
 
@@ -65,6 +65,8 @@ const DASH_DETECTION_TIME = 0.1
 const DASH_VELOCITY = 1200
 const DASH_COOLDOWN = 0.3
 const DASH_COST = 3
+
+const VEL_ANIM_THRESH = 20
 
 func hit(rev, dmg, knockback):
 	velocity.y = -200
@@ -103,30 +105,55 @@ func setAnim(anim,rev):
 	get_node("Pounce").visible = (anim == "Pounce")
 	get_node("Bite").visible = (anim == "Bite")
 	get_node("Idle").visible = (anim == "Idle")
+	get_node("Walk").visible = (anim == "Walk")
+	get_node("Reverse").visible = (anim == "Reverse")
+
+
+func updateAnimator(rev):
+	if(attack_executed == "special"):
+		setAnim("Pounce",rev)
+	elif(attack_executed == "close"):
+		setAnim("Bite",rev)
+	elif(velocity.x > VEL_ANIM_THRESH):
+		setAnim("Walk",rev)
+	elif(velocity.x < -VEL_ANIM_THRESH):
+		setAnim("Reverse",rev)
+	else:
+		setAnim("Idle",rev)
 
 func doInput(rev, delta):
 	cooldown -= delta
 
 	if(cooldown < 0):
 		attack_executed = ""
+	
+	# cancel move if holding fight keys, or in cooldown
+	if("close" in cmds or "ranged" in cmds or "special" in cmds or cooldown > 0):
+		cmds.erase("left")
+		cmds.erase("right")
 		
-	if(attack_executed == "special"):
-		setAnim("Pounce",rev)
-	elif(attack_executed == "close"):
-		setAnim("Bite",rev)
-	else:
-		setAnim("Idle",rev)
+	
+	# make sure animator's reset
+	if(not "right" in cmds):
+		if( get_node("Walk").frame == 0):
+			get_node("Walk").frame = 0
+	elif(get_node("Walk").frame == 8):
+		get_node("Walk").frame = 2
+		
+	# make sure animator's reset
+	if(not "left" in cmds):
+		if( get_node("Reverse").frame == 0):
+			get_node("Reverse").frame = 0
+	elif(get_node("Reverse").frame == 8):
+		get_node("Reverse").frame = 2
+	
+	updateAnimator(rev)
 		
 	if(get_node("../").trans_time  > 0):
 		return
 	
 	time_elapsed += delta
 	
-	
-	# cancel move if holding fight keys, or in cooldown
-	if("close" in cmds or "ranged" in cmds or "special" in cmds or cooldown > 0):
-		cmds.erase("left")
-		cmds.erase("right")
 	
 	checkForDash(rev)
 	
@@ -150,6 +177,12 @@ func doInput(rev, delta):
 	if("left" in cmds):
 		velocity.x -= delta * (MOVESPEED * BACKUP_SPEED_RATIO) * rev
 
+func spawnHitMarker(pos):
+	var d = damagefx.instance()
+	get_parent().add_child(d)
+	d.global_position = pos
+	d.emitting = true
+
 
 func tryCloseAttack(rev, delta):
 	if(attack_executed == "close" and cooldown > CLOSE_ATTACK_HIT and cooldown - delta <= CLOSE_ATTACK_HIT):
@@ -160,13 +193,8 @@ func tryCloseAttack(rev, delta):
 			get_node("../Enemy").hit(rev,CLOSE_ATTACK_DAMAGE,CLOSE_ATTACK_KNOCKBACK)
 		if(dist < CLOSE_ATTACK_RANGE and rev == -1):
 			get_node("../Player").hit(rev,CLOSE_ATTACK_DAMAGE,CLOSE_ATTACK_KNOCKBACK)
+		spawnHitMarker(global_position + Vector2(rev * 60,-5))
 		
-		var d = damagefx.instance()
-		get_parent().add_child(d)
-		d.global_position = global_position + Vector2(rev * 60,-5)
-		d.emitting = true
-		
-	
 	if(attack_executed == "close" and cooldown > CLOSE_ATTACK_LAUNCH and cooldown - delta <= CLOSE_ATTACK_LAUNCH):
 		velocity.x += CLOSE_ATTACK_VEL_BOOST * rev
 
@@ -212,6 +240,7 @@ func trySpecialAttack(rev,delta):
 			get_node("../Enemy").hit(rev, POUNCE_ATTACK_DAMAGE, POUNCE_ATTACK_KNOCKBACK)
 		if(dist < POUNCE_ATTACK_RANGE and rev == -1):
 			get_node("../Player").hit(rev, POUNCE_ATTACK_DAMAGE, POUNCE_ATTACK_KNOCKBACK)
+		spawnHitMarker(global_position + Vector2(rev * 100,-5))
 	
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_LAUNCH and cooldown - delta <= POUNCE_ATTACK_LAUNCH):
 		velocity.x += POUNCE_ATTACK_VEL_BOOSTX * rev

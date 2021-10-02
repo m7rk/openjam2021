@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Transitioner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://idle/idle.tres" type="SpriteFrames" id=12]
 [ext_resource path="res://bite/bite.tres" type="SpriteFrames" id=13]
+[ext_resource path="res://walk/walk.tres" type="SpriteFrames" id=14]
+[ext_resource path="res://walk/reverse.tres" type="SpriteFrames" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1541.06, 10 )
@@ -108,7 +110,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 7
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -116,7 +118,6 @@ __meta__ = {
 }
 
 [node name="Bite" type="AnimatedSprite" parent="Enemy"]
-visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
@@ -129,12 +130,27 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 8
+frame = 21
 speed_scale = 1.5
 playing = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Walk" type="AnimatedSprite" parent="Enemy"]
+position = Vector2( -7, -9 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 14 )
+speed_scale = 2.0
+playing = true
+
+[node name="Reverse" type="AnimatedSprite" parent="Enemy"]
+position = Vector2( -7, -9 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 15 )
+frame = 6
+speed_scale = 1.5
+playing = true
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 202.303, 330.264 )
@@ -168,7 +184,6 @@ __meta__ = {
 }
 
 [node name="Bite" type="AnimatedSprite" parent="Player"]
-visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
@@ -182,11 +197,27 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
+frame = 12
 speed_scale = 1.5
 playing = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Walk" type="AnimatedSprite" parent="Player"]
+position = Vector2( -7, -9 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 14 )
+frame = 9
+speed_scale = 2.0
+playing = true
+
+[node name="Reverse" type="AnimatedSprite" parent="Player"]
+position = Vector2( -7, -9 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 15 )
+speed_scale = 1.5
+playing = true
 
 [node name="Projectiles" type="Node2D" parent="."]
 
