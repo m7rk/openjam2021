@@ -10,12 +10,12 @@ extends Node2D
 func _ready():
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
 
-func do_anim_finished(string):
+func doAnimFinished(string):
 	get_tree().change_scene("res://Fight.tscn")
 
 func transition():
 	get_node("Transitioner/AnimationPlayer").play("starttrans")
-	get_node("Transitioner/AnimationPlayer").connect("animation_finished", self, "do_anim_finished")
+	get_node("Transitioner/AnimationPlayer").connect("animation_finished", self, "doAnimFinished")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

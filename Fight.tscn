@@ -103,7 +103,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 14
+frame = 6
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -134,7 +134,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 13
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {

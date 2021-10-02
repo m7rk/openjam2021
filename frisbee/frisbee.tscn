@@ -8,6 +8,7 @@ extents = Vector2( 38.7057, 7.10954 )
 
 [node name="RigidBody2D" type="RigidBody2D"]
 position = Vector2( 408.708, 252.673 )
+gravity_scale = 3.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
