@@ -47,9 +47,10 @@ const POUNCE_ATTACK_RANGE = 120
 const POUNCE_ATTACK_DAMAGE = 20
 const POUNCE_ATTACK_KNOCKBACK = 1200
 
+const RANGED_ATTACK_HIT = 0.5
 const RANGED_CHARGE_ONE = 0.5
 const RANGED_CHARGE_TWO = 1.0
-const RANGED_COOLDOWN = 0.5
+const RANGED_COOLDOWN = 0.8
 const RANGED_LAUNCH = 0.3
 const RANGED_ATTACK_DAMAGE = 15
 
@@ -107,11 +108,14 @@ func setAnim(anim,rev):
 	get_node("Idle").visible = (anim == "Idle")
 	get_node("Walk").visible = (anim == "Walk")
 	get_node("Reverse").visible = (anim == "Reverse")
+	get_node("Projectile").visible = (anim == "Projectile")
 
 
 func updateAnimator(rev):
 	if(attack_executed == "special"):
 		setAnim("Pounce",rev)
+	elif(attack_executed == "ranged"):
+		setAnim("Projectile",rev)
 	elif(attack_executed == "close"):
 		setAnim("Bite",rev)
 	elif(velocity.x > VEL_ANIM_THRESH):
@@ -165,9 +169,9 @@ func doInput(rev, delta):
 	
 	
 	if(charge_command == "ranged" and charge_time > RANGED_CHARGE_TWO):
-		get_node("Idle").modulate = Color(1,0,0)
+		get_node("Idle").modulate = Color(0.5,0.5,1)
 	elif(charge_command == "ranged" and charge_time > RANGED_CHARGE_ONE):
-		get_node("Idle").modulate = Color(1,1,0)
+		get_node("Idle").modulate = Color(1,0.5,0.5)
 	else:
 		get_node("Idle").modulate = Color(1,1,1)
 	
@@ -209,25 +213,29 @@ func tryCloseAttack(rev, delta):
 	return false
 
 func tryRangedAttack(rev, delta):
+	if(attack_executed == "ranged" and cooldown > RANGED_ATTACK_HIT and cooldown - delta <= RANGED_ATTACK_HIT):
+		var v = null
+		if(charge_time >= RANGED_CHARGE_TWO):
+			v = ball.instance()
+			v.velocity = Vector2(rev * BALL_SPEED_X,-BALL_SPEED_Y)
+		else:
+			v = frisbee.instance()
+			v.linear_velocity = Vector2(rev * FRISBEE_SPEED_X,-FRISBEE_SPEED_Y)
+		get_node("../Projectiles").add_child(v)
+		v.global_position = global_position + Vector2(rev * 90,-50)
+		charge_command = ""
+		charge_time = 0
+		
 	if("ranged" in cmds):
 		if(charge_command == ""):
 			charge_command = "ranged"
 		charge_time += delta
 		return true
 	else:
-		if(charge_command == "ranged" and charge_time > RANGED_CHARGE_ONE):
-			var v = null
-	
-			if(charge_time >= RANGED_CHARGE_TWO):
-				v = ball.instance()
-				v.velocity = Vector2(rev * BALL_SPEED_X,-BALL_SPEED_Y)
-			else:
-				v = frisbee.instance()
-				v.linear_velocity = Vector2(rev * FRISBEE_SPEED_X,-FRISBEE_SPEED_Y)
-			get_node("../Projectiles").add_child(v)
-			v.global_position = global_position + Vector2(rev * 90,-50)
-			charge_command = ""
-			charge_time = 0
+		if(charge_command == "ranged" and charge_time > RANGED_CHARGE_ONE and cooldown < 0):
+			attack_executed = "ranged"
+			cooldown = RANGED_COOLDOWN
+			get_node("Projectile").frame = 0
 			return true
 	return false
 	
@@ -252,6 +260,7 @@ func trySpecialAttack(rev,delta):
 		cooldown = POUNCE_ATTACK_COOLDOWN
 		attack_executed = "special"
 		get_node("Pounce").frame = 0
+		
 		charge_command = ""
 		return true
 	return false
