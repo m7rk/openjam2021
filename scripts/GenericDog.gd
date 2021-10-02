@@ -12,6 +12,9 @@ var dampen = 10
 var input = ""
 var cmds = []
 
+var charge_command = ""
+var charge_time = 0
+
 func hit(rev):
 	velocity.y = -100
 	velocity.x = rev * 1000
@@ -32,6 +35,8 @@ func do_input(rev, delta):
 func fight(rev):
 	if(get_node("../").trans_time > 0):
 		return
+	
+		
 		
 	if("close" in cmds):
 		if(abs(global_position.x - get_node("../Enemy").global_position.x) < 200):
@@ -40,7 +45,7 @@ func fight(rev):
 	if("ranged" in cmds):
 		var v = frisbee.instance()
 		get_node("../Projectiles").add_child(v)
-		v.global_position = global_position + Vector2(rev * 100,-60)
+		v.global_position = global_position + Vector2(rev * 90,-50)
 		v.linear_velocity = Vector2(rev * 200,-60)
 
 func apply_forces(delta):

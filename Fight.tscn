@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://dog.png" type="Texture" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
 [ext_resource path="res://scripts/EnemyDog.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=4]
@@ -11,14 +10,18 @@
 [ext_resource path="res://font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://scripts/FightManager.gd" type="Script" id=10]
 [ext_resource path="res://Transitioner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://idle/idle.tres" type="SpriteFrames" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1541.06, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.21212, 5.18613 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "roundfinish"
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4.33712, 6.8528 )
+
+[sub_resource type="Animation" id=4]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:text")
@@ -33,7 +36,7 @@ tracks/0/keys = {
 "values": [ "PLAYTIME IS OVER!", "" ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:text")
@@ -81,36 +84,59 @@ texture = ExtResource( 5 )
 position = Vector2( 202.303, 330.264 )
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="HEAD" type="CollisionShape2D" parent="Player"]
+position = Vector2( 33.3334, -24.3334 )
 scale = Vector2( 8, 5 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 1 )
-offset = Vector2( 10, -20 )
-flip_h = true
+[node name="BODY" type="CollisionShape2D" parent="Player"]
+position = Vector2( -17, 16.6667 )
+scale = Vector2( 8, 5 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 12 )
+frame = 14
+speed_scale = 1.5
+playing = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 584.87, 328.266 )
+position = Vector2( 592.054, 336.597 )
+scale = Vector2( -1, 1 )
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+[node name="HEAD" type="CollisionShape2D" parent="Enemy"]
+position = Vector2( 33.3334, -24.3334 )
 scale = Vector2( 8, 5 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Enemy"]
-self_modulate = Color( 1, 0, 0, 1 )
-texture = ExtResource( 1 )
-offset = Vector2( -10, -20 )
+[node name="BODY" type="CollisionShape2D" parent="Enemy"]
+position = Vector2( -17, 16.6667 )
+scale = Vector2( 8, 5 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy"]
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 12 )
+frame = 13
+speed_scale = 1.5
+playing = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -163,8 +189,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Display"]
-anims/roundfinish = SubResource( 3 )
-anims/roundstart = SubResource( 4 )
+anims/roundfinish = SubResource( 4 )
+anims/roundstart = SubResource( 5 )
 
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
 
