@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
+[ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
 [ext_resource path="res://scripts/EnemyDog.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=4]
@@ -11,6 +12,7 @@
 [ext_resource path="res://scripts/FightManager.gd" type="Script" id=10]
 [ext_resource path="res://Transitioner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://idle/idle.tres" type="SpriteFrames" id=12]
+[ext_resource path="res://bite/bite.tres" type="SpriteFrames" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1541.06, 10 )
@@ -80,44 +82,15 @@ position = Vector2( 378.689, 343.079 )
 scale = Vector2( 0.440882, 0.411603 )
 texture = ExtResource( 5 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 202.303, 330.264 )
-script = ExtResource( 2 )
-
-[node name="HEAD" type="CollisionShape2D" parent="Player"]
-position = Vector2( 33.3334, -24.3334 )
-scale = Vector2( 8, 5 )
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BODY" type="CollisionShape2D" parent="Player"]
-position = Vector2( -17, 16.6667 )
-scale = Vector2( 8, 5 )
-shape = SubResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
-scale = Vector2( 0.3, 0.3 )
-frames = ExtResource( 12 )
-frame = 26
-speed_scale = 1.5
-playing = true
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Enemy" type="KinematicBody2D" parent="."]
 position = Vector2( 592.054, 336.597 )
-scale = Vector2( -1, 1 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
 script = ExtResource( 3 )
 
 [node name="HEAD" type="CollisionShape2D" parent="Enemy"]
 position = Vector2( 33.3334, -24.3334 )
-scale = Vector2( 8, 5 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
@@ -131,10 +104,84 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy"]
+[node name="Pounce" type="AnimatedSprite" parent="Enemy"]
+position = Vector2( -7, -10 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 1 )
+frame = 7
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bite" type="AnimatedSprite" parent="Enemy"]
+visible = false
+position = Vector2( -24, -5 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 13 )
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 25
+frame = 8
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 202.303, 330.264 )
+script = ExtResource( 2 )
+
+[node name="HEAD" type="CollisionShape2D" parent="Player"]
+position = Vector2( 33.3334, -24.3334 )
+scale = Vector2( 5, 5 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BODY" type="CollisionShape2D" parent="Player"]
+position = Vector2( -17, 16.6667 )
+scale = Vector2( 8, 5 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Pounce" type="AnimatedSprite" parent="Player"]
+position = Vector2( -7, -10 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 1 )
+frame = 3
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bite" type="AnimatedSprite" parent="Player"]
+visible = false
+position = Vector2( -24, -5 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 13 )
+frame = 4
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Idle" type="AnimatedSprite" parent="Player"]
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 12 )
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -193,5 +240,8 @@ anims/roundfinish = SubResource( 4 )
 anims/roundstart = SubResource( 5 )
 
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
+
+[node name="TextureRect" parent="Transitioner" index="0"]
+visible = false
 
 [editable path="Transitioner"]
