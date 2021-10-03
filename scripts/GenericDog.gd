@@ -189,7 +189,7 @@ func pointHurt(rev,pos,kb):
 
 	if(result):
 		if("Mob" in result.collider.get_parent().name):
-			result.collider.get_parent().queue_free()
+			result.collider.get_parent().hit()
 		else:
 			result.collider.hit(rev,kb)
 		spawnHitMarker(pos)

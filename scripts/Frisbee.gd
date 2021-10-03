@@ -28,7 +28,6 @@ func _physics_process(delta):
 	if(is_mob):
 		sleeping = true
 		if(WAKE_DIST > abs(get_node("../../Player").global_position.x - global_position.x)):
-			print("trig!")
 			sleeping = false
 			linear_velocity.x = -200
 			linear_velocity.y = 30
