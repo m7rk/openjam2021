@@ -69,9 +69,11 @@ func hit(rev, knockback):
 	velocity.y = -200
 	velocity.x = rev * knockback
 	hp -= 1
+	get_node("../").triggerHitTime()
 	
 func catch():
 	hp -= 1
+	get_node("../").triggerHitTime()
 	# launch catch animation.
 
 func _ready():
