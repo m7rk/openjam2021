@@ -123,6 +123,7 @@ func doInput(rev, delta):
 
 	if(cooldown < 0):
 		attack_executed = ""
+		attack_consumed = false
 	
 	# cancel move if holding fight keys, or in cooldown
 	if("close" in cmds or "ranged" in cmds or "special" in cmds or cooldown > 0):
@@ -182,10 +183,9 @@ func spawnHitMarker(pos):
 
 func pointHurt(rev,pos,kb):
 	var space_state = get_world_2d().direct_space_state
-	# use global coordinates, not local to node
+	
 	var result = space_state.intersect_ray(global_position, pos, [], 2, true, true)
 	if(result):
-		print("hit!")
 		if("Mob" in result.collider.get_parent().name):
 			result.collider.get_parent().queue_free()
 		else:

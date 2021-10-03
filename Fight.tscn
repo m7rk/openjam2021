@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://quote.png" type="Texture" id=20]
 [ext_resource path="res://scripts/Dialogue.gd" type="Script" id=21]
 [ext_resource path="res://BeeMob.tscn" type="PackedScene" id=22]
+[ext_resource path="res://RockPooler.gd" type="Script" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
@@ -47,7 +48,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "PLAYTIME IS OVER!", "" ]
+"values": [ "EXHAUSTED!", "" ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -59,11 +60,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5, 2, 2.5, 3, 3.5, 4, 4.5 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "READY?", "", "3", "2", "1", "
-", "LETS GO", "" ]
+"values": [ "", "READY", "READY.", "READY..", "READY...", "", "GO!", "" ]
 }
 
 [node name="Fight" type="Node2D"]
@@ -125,8 +125,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Sprite4" type="Sprite" parent="plax"]
+position = Vector2( 3430, 320 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Rocks" type="Node2D" parent="."]
 position = Vector2( -100, 0 )
+script = ExtResource( 23 )
 
 [node name="Sprite" type="Sprite" parent="Rocks"]
 position = Vector2( 300, 275 )
@@ -152,7 +161,7 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 3
+frame = 1
 playing = true
 script = ExtResource( 21 )
 
@@ -179,7 +188,6 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 2
 playing = true
 script = ExtResource( 21 )
 
@@ -206,7 +214,6 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 2
 playing = true
 script = ExtResource( 21 )
 
@@ -230,7 +237,7 @@ __meta__ = {
 }
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 1912.2, 288.975 )
+position = Vector2( 6595.91, 188.757 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 collision_layer = 2
@@ -256,7 +263,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 2
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -277,7 +284,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 15
+frame = 12
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -288,7 +295,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 7
+frame = 5
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -299,7 +306,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 5
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -310,7 +317,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 4
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -341,7 +348,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 10
+frame = 11
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -362,7 +369,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 7
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -373,7 +380,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 5
+frame = 3
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -384,7 +391,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 3
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -396,7 +403,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 10
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -406,15 +413,25 @@ __meta__ = {
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="BeeMob" parent="Mobs" instance=ExtResource( 22 )]
+position = Vector2( 2837.8, 420 )
 
 [node name="BeeMob2" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 908.576, 437.934 )
+position = Vector2( 3337.24, 420 )
 
 [node name="BeeMob3" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 1025.74, 437.373 )
+position = Vector2( 3482.37, 420 )
 
 [node name="BeeMob4" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 1152.44, 431.206 )
+position = Vector2( 3613.56, 420 )
+
+[node name="BeeMob5" parent="Mobs" instance=ExtResource( 22 )]
+position = Vector2( 3948.86, 420 )
+
+[node name="BeeMob6" parent="Mobs" instance=ExtResource( 22 )]
+position = Vector2( 4541.19, 420 )
+
+[node name="BeeMob7" parent="Mobs" instance=ExtResource( 22 )]
+position = Vector2( 4192.72, 300 )
 
 [node name="Projectiles" type="Node2D" parent="."]
 
@@ -465,7 +482,6 @@ margin_right = 637.0
 margin_bottom = 278.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "READY?"
 align = 1
 valign = 1
 __meta__ = {
