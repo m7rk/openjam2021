@@ -27,6 +27,8 @@ var attack_consumed = false
 
 var damagefx = preload("res://Hit.tscn")
 
+var movefx = preload("res://MoveEffect.tscn")
+
 # consts
 const GRAVITY = 1000
 const MOVESPEED = 2500
@@ -64,6 +66,18 @@ const DASH_VELOCITY = 1500
 const DASH_COOLDOWN = 0.4
 
 const VEL_ANIM_THRESH = 20
+
+var moveEffectCtr = 0
+
+func addMoveEffect(pos):
+	moveEffectCtr -= 1
+	if(moveEffectCtr < 0):
+		var g = movefx.instance()
+		get_node("../MoveEffects").add_child(g)
+		g.global_position = pos
+		g.frames = getActiveAnim().frames
+		g.frame = getActiveAnim().frame
+		moveEffectCtr = 3
 
 func hit(rev, knockback):
 	velocity.y = -200
@@ -105,6 +119,11 @@ func setAnim(anim,rev):
 	get_node("Reverse").visible = (anim == "Reverse")
 	get_node("Projectile").visible = (anim == "Projectile")
 
+func getActiveAnim():
+	var anims = ["Pounce","Bite","Idle","Walk","Reverse","Projectile"]
+	for i in anims:
+		if(get_node(i).visible):
+			return get_node(i)
 
 func updateAnimator(rev):
 	if(attack_executed == "special"):
@@ -161,9 +180,9 @@ func doInput(rev, delta):
 	tryAttacks(rev,delta)
 	
 	if(charge_command == "ranged" and charge_time > RANGED_CHARGE_TWO):
-		get_node("Idle").modulate = Color(0.5,0.5,1)
+		get_node("Idle").modulate = Color(0.8,0.8,1)
 	elif(charge_command == "ranged" and charge_time > RANGED_CHARGE_ONE):
-		get_node("Idle").modulate = Color(1,0.5,0.5)
+		get_node("Idle").modulate = Color(1,0.8,0.8)
 	else:
 		get_node("Idle").modulate = Color(1,1,1)
 	
@@ -201,6 +220,7 @@ func pointHurt(rev,pos,kb):
 func tryCloseAttack(rev, delta):
 	if(attack_executed == "close" and cooldown > CLOSE_ATTACK_HIT and cooldown < CLOSE_ATTACK_LAUNCH ):
 		if(not attack_consumed):
+			addMoveEffect(global_position)
 			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 70,-5), CLOSE_ATTACK_KNOCKBACK)
 		
 	if(attack_executed == "close" and cooldown > CLOSE_ATTACK_LAUNCH and cooldown - delta <= CLOSE_ATTACK_LAUNCH):
@@ -246,6 +266,7 @@ func tryRangedAttack(rev, delta):
 func trySpecialAttack(rev,delta):
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown < POUNCE_ATTACK_LAUNCH):	
 		if(not attack_consumed):
+			addMoveEffect(global_position)
 			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 100,-5), POUNCE_ATTACK_KNOCKBACK)
 	
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_LAUNCH and cooldown - delta <= POUNCE_ATTACK_LAUNCH):
