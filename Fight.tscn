@@ -18,11 +18,11 @@
 [ext_resource path="res://projectile/projectile.tres" type="SpriteFrames" id=16]
 [ext_resource path="res://backgrounds/ground.png" type="Texture" id=17]
 [ext_resource path="res://tutorialdog/tutorialdog.tres" type="SpriteFrames" id=18]
-[ext_resource path="res://plax.gd" type="Script" id=19]
-[ext_resource path="res://quote.png" type="Texture" id=20]
+[ext_resource path="res://scripts/plax.gd" type="Script" id=19]
+[ext_resource path="res://misc/quote.png" type="Texture" id=20]
 [ext_resource path="res://scripts/Dialogue.gd" type="Script" id=21]
 [ext_resource path="res://BeeMob.tscn" type="PackedScene" id=22]
-[ext_resource path="res://RockPooler.gd" type="Script" id=23]
+[ext_resource path="res://scripts/RockPooler.gd" type="Script" id=23]
 [ext_resource path="res://RatMob.tscn" type="PackedScene" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -162,7 +162,7 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 5
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -189,7 +189,7 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 3
 playing = true
 script = ExtResource( 21 )
 
@@ -216,7 +216,7 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 3
 playing = true
 script = ExtResource( 21 )
 
@@ -266,7 +266,6 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 7
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -277,7 +276,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 3
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -287,6 +286,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
+frame = 17
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -297,7 +297,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 2
+frame = 10
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -308,7 +308,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 3
+frame = 6
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -319,7 +319,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -350,7 +350,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 3
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -361,7 +361,6 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -371,7 +370,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 20
+frame = 9
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -382,6 +381,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
+frame = 8
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -392,7 +392,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 2
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -404,7 +404,6 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -567,5 +566,7 @@ anims/roundstart = SubResource( 6 )
 visible = false
 
 [node name="Healths" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Healths"]
 
 [editable path="Transitioner"]

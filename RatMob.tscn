@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ratman/ratman.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://RatMob.gd" type="Script" id=2]
+[ext_resource path="res://scripts/RatMob.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 38.6184, 50.1599 )
@@ -12,7 +12,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 3
+frame = 5
 speed_scale = 2.0
 playing = true
 __meta__ = {

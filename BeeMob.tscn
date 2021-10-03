@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://b46/b46.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://BeeMob.gd" type="Script" id=2]
+[ext_resource path="res://scripts/BeeMob.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.8601, 16.8531 )
@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 1 )
-frame = 6
+frame = 7
 speed_scale = 2.0
 playing = true
 __meta__ = {
