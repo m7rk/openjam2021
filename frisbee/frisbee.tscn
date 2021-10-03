@@ -8,6 +8,8 @@ extents = Vector2( 38.7057, 7.10954 )
 
 [node name="Frisbee" type="RigidBody2D"]
 position = Vector2( 408.708, 252.673 )
+collision_layer = 0
+collision_mask = 3
 gravity_scale = 3.0
 contacts_reported = 1
 contact_monitor = true
@@ -21,5 +23,5 @@ shape = SubResource( 1 )
 [node name="Frisbee" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = ExtResource( 1 )
-frame = 2
+frame = 1
 playing = true

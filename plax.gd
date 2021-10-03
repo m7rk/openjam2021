@@ -16,10 +16,8 @@ func _process(delta):
 	global_position = get_node("../Camera2D").global_position / 2 + Vector2(-300,-100)
 	for i in get_children():
 		if(get_node("../Player").global_position.x - i.global_position.x > 2000):
-			print("scooted2")
 			# scoot up
 			i.global_position.x += (990 * 4)
 		if(get_node("../Player").global_position.x - i.global_position.x < -2000):
-			print("scooted2")
 			# scoot back
 			i.global_position.x -= (990 * 4)

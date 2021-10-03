@@ -22,7 +22,7 @@ func _process(delta):
 		global_position.x -= delta * BEE_SPEED
 		global_position.y += delta * BEE_SPEED
 		if(get_node("AnimatedSprite").frame == 10):
-			get_node("AnimatedSprite").frame = 4
+			get_node("AnimatedSprite").frame = 5
 			
 	elif(dist < WAKEUP):
 		global_position.x -= delta * BEE_SPEED
@@ -37,3 +37,8 @@ func _on_Area2D_body_entered(body):
 	if(body.name == "Player"):
 		body.hit(-1,BEE_KNOCKBACK)
 		queue_free()
+	else:
+		# projectile / boundary hit me!
+		queue_free()
+		if(body.name == "Ball" or body.name == "Frisbee"):
+			body.queue_free()

@@ -17,6 +17,10 @@ func _on_body_entered(body):
 	if(body.name == "Enemy"):
 		body.catch()
 	queue_free()
+	
+func _on_area_entered(body):
+	if("Mob" in body.get_parent().name):
+		body.name.get_parent().queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

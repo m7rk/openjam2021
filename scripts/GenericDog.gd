@@ -151,16 +151,13 @@ func doInput(rev, delta):
 		return
 	
 	time_elapsed += delta
-	
-	
+
 	checkForDash(rev)
 	
 	last_inputs = cmds
-	
 
 	tryAttacks(rev,delta)
 
-	
 	
 	if(charge_command == "ranged" and charge_time > RANGED_CHARGE_TWO):
 		get_node("Idle").modulate = Color(0.5,0.5,1)
@@ -239,7 +236,7 @@ func tryRangedAttack(rev, delta):
 	return false
 	
 func trySpecialAttack(rev,delta):
-	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown - delta <= POUNCE_ATTACK_HIT):	
+	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown < POUNCE_ATTACK_LAUNCH):	
 		if(not attack_consumed):
 			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 100,-5), POUNCE_ATTACK_KNOCKBACK)
 	
