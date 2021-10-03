@@ -16,7 +16,6 @@ func _process(delta):
 	var targ = Vector2((get_node("../Enemy").global_position.x + get_node("../Player").global_position.x)/2, 250 )
 	var offset = targ.x - get_node("../Player").global_position.x
 	
-	print(offset)
 	if(offset > 250):
 		targ.x = get_node("../Player").global_position.x + 250
 	global_position = lerp(global_position,targ,10*delta)

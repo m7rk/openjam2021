@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/skyline tree addition.png-a85a5dd00afc510311817de7ccef155c.stex"
+path="res://.import/skyline tree addition.png-496c69211467d3f07d10815c527f29fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://skyline tree addition.png"
-dest_files=[ "res://.import/skyline tree addition.png-a85a5dd00afc510311817de7ccef155c.stex" ]
+source_file="res://backgrounds/skyline tree addition.png"
+dest_files=[ "res://.import/skyline tree addition.png-496c69211467d3f07d10815c527f29fb.stex" ]
 
 [params]
 

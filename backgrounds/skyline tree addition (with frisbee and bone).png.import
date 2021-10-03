@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ground.png-19dd19062ae149a099889071e7b87881.stex"
+path="res://.import/skyline tree addition (with frisbee and bone).png-868aa7b19e633572e88b635bb818dc17.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ground.png"
-dest_files=[ "res://.import/ground.png-19dd19062ae149a099889071e7b87881.stex" ]
+source_file="res://backgrounds/skyline tree addition (with frisbee and bone).png"
+dest_files=[ "res://.import/skyline tree addition (with frisbee and bone).png-868aa7b19e633572e88b635bb818dc17.stex" ]
 
 [params]
 
