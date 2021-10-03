@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/health points.png-cb14fc0c3b1a3bd7e473f7fd553ed338.stex"
+path="res://.import/frame0009.png-791dc55330bcd914a4d035fc759889fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/health points.png"
-dest_files=[ "res://.import/health points.png-cb14fc0c3b1a3bd7e473f7fd553ed338.stex" ]
+source_file="res://b46/frame0009.png"
+dest_files=[ "res://.import/frame0009.png-791dc55330bcd914a4d035fc759889fa.stex" ]
 
 [params]
 

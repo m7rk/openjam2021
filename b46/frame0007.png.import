@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unhealth points.png-f7d76e2910a9dfe06912c1ac4fc991f3.stex"
+path="res://.import/frame0007.png-4b7118634c2dd5178a3cda928a78b1d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/unhealth points.png"
-dest_files=[ "res://.import/unhealth points.png-f7d76e2910a9dfe06912c1ac4fc991f3.stex" ]
+source_file="res://b46/frame0007.png"
+dest_files=[ "res://.import/frame0007.png-4b7118634c2dd5178a3cda928a78b1d4.stex" ]
 
 [params]
 

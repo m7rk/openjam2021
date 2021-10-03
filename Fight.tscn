@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=4]
 [ext_resource path="res://backgrounds/skyline.png" type="Texture" id=5]
 [ext_resource path="res://backgrounds/skyline tree addition.png" type="Texture" id=6]
-[ext_resource path="res://ui/health points.png" type="Texture" id=7]
+[ext_resource path="res://ui/health.png" type="Texture" id=7]
 [ext_resource path="res://scripts/UI.gd" type="Script" id=8]
 [ext_resource path="res://font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://scripts/FightManager.gd" type="Script" id=10]
@@ -21,20 +21,21 @@
 [ext_resource path="res://plax.gd" type="Script" id=19]
 [ext_resource path="res://quote.png" type="Texture" id=20]
 [ext_resource path="res://scripts/Dialogue.gd" type="Script" id=21]
+[ext_resource path="res://BeeMob.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 1000 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 3.21212, 5.18613 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 4.33712, 6.8528 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:text")
@@ -49,7 +50,7 @@ tracks/0/keys = {
 "values": [ "PLAYTIME IS OVER!", "" ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:text")
@@ -81,7 +82,7 @@ __meta__ = {
 position = Vector2( 0, 502 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bound"]
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -151,7 +152,7 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 3
 playing = true
 script = ExtResource( 21 )
 
@@ -178,7 +179,7 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 2
 playing = true
 script = ExtResource( 21 )
 
@@ -205,7 +206,7 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 3
+frame = 2
 playing = true
 script = ExtResource( 21 )
 
@@ -232,12 +233,13 @@ __meta__ = {
 position = Vector2( 1912.2, 288.975 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
+collision_layer = 2
 script = ExtResource( 3 )
 
 [node name="HEAD" type="CollisionShape2D" parent="Enemy"]
 position = Vector2( 33.3334, -24.3334 )
 scale = Vector2( 5, 5 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -245,7 +247,7 @@ __meta__ = {
 [node name="BODY" type="CollisionShape2D" parent="Enemy"]
 position = Vector2( -17, 16.6667 )
 scale = Vector2( 8, 5 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -254,7 +256,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 8
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -265,7 +267,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -275,7 +277,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 1
+frame = 15
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -286,7 +288,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 8
+frame = 7
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -297,7 +299,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 1
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -322,7 +324,7 @@ script = ExtResource( 2 )
 [node name="HEAD" type="CollisionShape2D" parent="Player"]
 position = Vector2( 33.3334, -24.3334 )
 scale = Vector2( 5, 5 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -330,7 +332,7 @@ __meta__ = {
 [node name="BODY" type="CollisionShape2D" parent="Player"]
 position = Vector2( -17, 16.6667 )
 scale = Vector2( 8, 5 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -339,7 +341,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 4
+frame = 10
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -350,7 +352,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 2
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -360,7 +362,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 21
+frame = 7
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -371,7 +373,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 6
+frame = 5
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -394,12 +396,25 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 6
+frame = 10
 speed_scale = 1.5
 playing = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Mobs" type="Node2D" parent="."]
+
+[node name="BeeMob" parent="Mobs" instance=ExtResource( 22 )]
+
+[node name="BeeMob2" parent="Mobs" instance=ExtResource( 22 )]
+position = Vector2( 908.576, 437.934 )
+
+[node name="BeeMob3" parent="Mobs" instance=ExtResource( 22 )]
+position = Vector2( 1025.74, 437.373 )
+
+[node name="BeeMob4" parent="Mobs" instance=ExtResource( 22 )]
+position = Vector2( 1152.44, 431.206 )
 
 [node name="Projectiles" type="Node2D" parent="."]
 
@@ -418,6 +433,9 @@ margin_right = 152.0
 margin_bottom = 150.0
 rect_scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
 margin_left = 50.0
@@ -456,8 +474,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Display"]
-anims/roundfinish = SubResource( 4 )
-anims/roundstart = SubResource( 5 )
+anims/roundfinish = SubResource( 6 )
+anims/roundstart = SubResource( 7 )
 
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
 

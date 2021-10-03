@@ -3,7 +3,7 @@ extends KinematicBody2D
 var frisbee = preload("res://frisbee/frisbee.tscn")
 var ball = preload("res://ball/ball.tscn")
 
-var hp = 100
+var hp = 4
 var velocity = Vector2.ZERO
 var input = ""
 var cmds = []
@@ -23,6 +23,8 @@ var last_inputs = []
 var last_l_depress = 0
 var last_r_depress = 0
 
+var attack_consumed = false
+
 var damagefx = preload("res://Hit.tscn")
 
 # consts
@@ -34,8 +36,6 @@ const CLOSE_ATTACK_HIT = 0.4
 const CLOSE_ATTACK_LAUNCH = 0.5
 const CLOSE_ATTACK_COOLDOWN = 0.7
 const CLOSE_ATTACK_VEL_BOOST = 700
-const CLOSE_ATTACK_RANGE = 120
-const CLOSE_ATTACK_DAMAGE = 10
 const CLOSE_ATTACK_KNOCKBACK = 800
 
 const POUNCE_ATTACK_HIT = 0.2
@@ -43,8 +43,6 @@ const POUNCE_ATTACK_LAUNCH = 0.5
 const POUNCE_ATTACK_COOLDOWN = 1.7
 const POUNCE_ATTACK_VEL_BOOSTX = 2300
 const POUNCE_ATTACK_VEL_BOOSTY = -300
-const POUNCE_ATTACK_RANGE = 180
-const POUNCE_ATTACK_DAMAGE = 20
 const POUNCE_ATTACK_KNOCKBACK = 1200
 
 const RANGED_ATTACK_HIT = 0.5
@@ -52,7 +50,6 @@ const RANGED_CHARGE_ONE = 0.5
 const RANGED_CHARGE_TWO = 1.0
 const RANGED_COOLDOWN = 0.8
 const RANGED_LAUNCH = 0.3
-const RANGED_ATTACK_DAMAGE = 15
 
 const FRISBEE_SPEED_X = 300
 const FRISBEE_SPEED_Y = 150
@@ -64,20 +61,18 @@ const BACKUP_SPEED_RATIO = 0.7
 
 const DASH_DETECTION_TIME = 0.1
 const DASH_VELOCITY = 1500
-const DASH_COOLDOWN = 0.3
-const DASH_COST = 3
+const DASH_COOLDOWN = 0.4
 
 const VEL_ANIM_THRESH = 20
 
-func hit(rev, dmg, knockback):
+func hit(rev, knockback):
 	velocity.y = -200
 	velocity.x = rev * knockback
-	hp -= dmg
+	hp -= 1
 	
 func catch():
-	hp -= RANGED_ATTACK_DAMAGE
+	hp -= 1
 	# launch catch animation.
-
 
 func _ready():
 	setAnim("Idle",1)
@@ -93,13 +88,11 @@ func checkForDash(rev):
 	if("right" in cmds and time_elapsed - last_r_depress < DASH_DETECTION_TIME):
 		attack_executed = "dash"
 		cooldown = DASH_COOLDOWN
-		hp -= DASH_COST
 		velocity.x += DASH_VELOCITY * rev
 		
 	if("left" in cmds and time_elapsed - last_l_depress < DASH_DETECTION_TIME):
 		attack_executed = "dash"
 		cooldown = DASH_COOLDOWN
-		hp -= DASH_COST
 		velocity.x -= (DASH_VELOCITY * BACKUP_SPEED_RATIO) * rev
 
 func setAnim(anim,rev):
@@ -187,21 +180,27 @@ func spawnHitMarker(pos):
 	d.global_position = pos
 	d.emitting = true
 
+func pointHurt(rev,pos,kb):
+	var space_state = get_world_2d().direct_space_state
+	# use global coordinates, not local to node
+	var result = space_state.intersect_ray(global_position, pos, [], 2, true, true)
+	if(result):
+		print("hit!")
+		if("Mob" in result.collider.get_parent().name):
+			result.collider.get_parent().queue_free()
+		else:
+			result.collider.hit(rev,kb)
+		spawnHitMarker(pos)
+		return true
+	return false
 
 func tryCloseAttack(rev, delta):
-	if(attack_executed == "close" and cooldown > CLOSE_ATTACK_HIT and cooldown - delta <= CLOSE_ATTACK_HIT):
-		var dist = abs(global_position.x - get_node("../Player").global_position.x)
-		if(rev == 1):
-			dist = abs(global_position.x - get_node("../Enemy").global_position.x)
-		if(dist < CLOSE_ATTACK_RANGE and rev == 1):
-			get_node("../Enemy").hit(rev,CLOSE_ATTACK_DAMAGE,CLOSE_ATTACK_KNOCKBACK)
-		if(dist < CLOSE_ATTACK_RANGE and rev == -1):
-			get_node("../Player").hit(rev,CLOSE_ATTACK_DAMAGE,CLOSE_ATTACK_KNOCKBACK)
-		spawnHitMarker(global_position + Vector2(rev * 60,-5))
+	if(attack_executed == "close" and cooldown > CLOSE_ATTACK_HIT and cooldown < CLOSE_ATTACK_LAUNCH ):
+		if(not attack_consumed):
+			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 70,-5), CLOSE_ATTACK_KNOCKBACK)
 		
 	if(attack_executed == "close" and cooldown > CLOSE_ATTACK_LAUNCH and cooldown - delta <= CLOSE_ATTACK_LAUNCH):
 		velocity.x += CLOSE_ATTACK_VEL_BOOST * rev
-
 			
 	# put in an order to execute "close" attack
 	if("close" in cmds and cooldown < 0):
@@ -241,14 +240,8 @@ func tryRangedAttack(rev, delta):
 	
 func trySpecialAttack(rev,delta):
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown - delta <= POUNCE_ATTACK_HIT):	
-		var dist = abs(global_position.x - get_node("../Player").global_position.x)
-		if(rev == 1):
-			dist = abs(global_position.x - get_node("../Enemy").global_position.x)
-		if(dist < POUNCE_ATTACK_RANGE and rev == 1):
-			get_node("../Enemy").hit(rev, POUNCE_ATTACK_DAMAGE, POUNCE_ATTACK_KNOCKBACK)
-		if(dist < POUNCE_ATTACK_RANGE and rev == -1):
-			get_node("../Player").hit(rev, POUNCE_ATTACK_DAMAGE, POUNCE_ATTACK_KNOCKBACK)
-		spawnHitMarker(global_position + Vector2(rev * 100,-5))
+		if(not attack_consumed):
+			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 100,-5), POUNCE_ATTACK_KNOCKBACK)
 	
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_LAUNCH and cooldown - delta <= POUNCE_ATTACK_LAUNCH):
 		velocity.x += POUNCE_ATTACK_VEL_BOOSTX * rev

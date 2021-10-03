@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://b46/b46.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://BeeMob.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 25.2136, 16.8531 )
+
+[node name="BeeMob" type="Node2D"]
+position = Vector2( 800.381, 437.373 )
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+frames = ExtResource( 1 )
+frame = 5
+speed_scale = 2.0
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -5.23814, 4.67693 )
+shape = SubResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
