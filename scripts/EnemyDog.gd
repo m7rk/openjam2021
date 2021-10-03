@@ -13,8 +13,8 @@ func _physics_process(delta):
 			cmds = ["right"]
 			move_time = 0.5
 		elif(targ == 2):
-			cmds = ["left"]
-			move_time = 0.5
+			cmds = ["special"]
+			move_time = 0.1
 		else:
 			cmds = []
 			move_time = 0.3

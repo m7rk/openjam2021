@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://BeeMob.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scripts/RockPooler.gd" type="Script" id=23]
 [ext_resource path="res://RatMob.tscn" type="PackedScene" id=24]
+[ext_resource path="res://misc/treat.png" type="Texture" id=25]
+[ext_resource path="res://Treat.gd" type="Script" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
@@ -36,6 +38,23 @@ extents = Vector2( 3.21212, 5.18613 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 4.33712, 6.8528 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "treatwobble"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 2, 2, 2, 2, 2 ),
+"update": 0,
+"values": [ 0.0, 50.0, 0.0, -50.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 4.0
@@ -65,6 +84,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "", "READY", "READY.", "READY..", "READY...", "", "GO!", "" ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "roundwin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "YOU WON LOL" ]
 }
 
 [node name="Fight" type="Node2D"]
@@ -266,6 +300,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
+frame = 6
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -276,7 +311,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 1
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -286,7 +321,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 17
+frame = 15
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -297,7 +332,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 10
+frame = 2
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -308,7 +343,6 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 6
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -350,7 +384,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 8
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -361,6 +395,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -370,7 +405,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 9
+frame = 7
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -381,7 +416,6 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 8
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -404,6 +438,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -458,6 +493,17 @@ position = Vector2( 6000, 437 )
 position = Vector2( 5500, 437 )
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Healths" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Healths"]
+position = Vector2( 7274.68, 445.506 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 25 )
+script = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Healths/Sprite"]
+anims/treatwobble = SubResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 8 )
@@ -549,6 +595,7 @@ margin_right = 637.0
 margin_bottom = 278.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "EXHAUSTED!"
 align = 1
 valign = 1
 __meta__ = {
@@ -559,14 +606,8 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Display"]
 anims/roundfinish = SubResource( 5 )
 anims/roundstart = SubResource( 6 )
+anims/roundwin = SubResource( 8 )
 
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
-
-[node name="TextureRect" parent="Transitioner" index="0"]
-visible = false
-
-[node name="Healths" type="Node2D" parent="."]
-
-[node name="Sprite" type="Sprite" parent="Healths"]
 
 [editable path="Transitioner"]

@@ -177,6 +177,9 @@ func spawnHitMarker(pos):
 	d.global_position = pos
 	d.emitting = true
 
+func heal():
+	hp = min(4,hp + 1)
+
 func pointHurt(rev,pos,kb):
 	var space_state = get_world_2d().direct_space_state
 	var layer = 2
