@@ -23,5 +23,4 @@ shape = SubResource( 1 )
 [node name="Frisbee" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 frames = ExtResource( 1 )
-frame = 3
 playing = true

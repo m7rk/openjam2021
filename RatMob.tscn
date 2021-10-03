@@ -12,7 +12,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 3
+frame = 4
 speed_scale = 2.0
 playing = true
 __meta__ = {
