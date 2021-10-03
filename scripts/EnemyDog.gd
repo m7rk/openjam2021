@@ -1,8 +1,10 @@
 extends "res://scripts/GenericDog.gd"
 
 var move_time = 1
+var fight_started = false
 
 func _physics_process(delta):
+	
 	
 	move_time -= delta
 	if(move_time < 0):
@@ -25,6 +27,17 @@ func _physics_process(delta):
 	if(dist > 400 && move_time > 0.4):
 		cmds.append("ranged")
 		
-	#doInput(-1,delta)
+	if(abs(get_node("../Player").global_position.x - global_position.x) < 700):
+		fight_started = true
+	
+	if(hp <= 0):
+		get_node("HEAD").disabled = true
+		get_node("BODY").disabled = true
+		cmds = []
+		
+	if(fight_started):
+		doInput(-1,delta)
+		
+
 	applyForces(delta)
 	velocity = move_and_slide(velocity, Vector2.DOWN)

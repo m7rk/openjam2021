@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -15,8 +15,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var ctr = 0
-	for i in get_children():
-		if (ctr < get_node("../../Player").hp):
+	for i in get_node("Player").get_children():
+		if (ctr < get_node("../Player").hp):
+			i.texture = full
+		else:
+			i.texture = empty
+		ctr += 1
+
+	ctr = 0
+
+	for i in get_node("Enemy").get_children():
+		i.visible = (get_node("../Enemy").fight_started)
+
+		if (ctr < get_node("../Enemy").hp):
 			i.texture = full
 		else:
 			i.texture = empty

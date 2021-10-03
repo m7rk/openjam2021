@@ -12,17 +12,15 @@ var can_dive_bomb = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	can_dive_bomb = (global_position.y == 300)
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var dist = abs(get_node("../../Player").global_position.x - global_position.x)
 	if(can_dive_bomb and dist < DIVE_BOMB_DIST):
-		global_position.x -= delta * BEE_SPEED
+		global_position.x -= delta * 2 *  BEE_SPEED
 		global_position.y += delta * BEE_SPEED
 		if(get_node("AnimatedSprite").frame == 10):
-			get_node("AnimatedSprite").frame = 5
+			get_node("AnimatedSprite").frame = 6
 			
 	elif(dist < WAKEUP):
 		global_position.x -= delta * BEE_SPEED

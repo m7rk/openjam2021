@@ -1,19 +1,18 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://b46/b46.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://BeeMob.gd" type="Script" id=2]
+[ext_resource path="res://ratman/ratman.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://RatMob.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20.8601, 16.8531 )
+extents = Vector2( 38.6184, 50.1599 )
 
-[node name="BeeMob" type="Node2D"]
-position = Vector2( 800.381, 437.373 )
+[node name="RatMob" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 6
+frame = 3
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -27,10 +26,7 @@ __meta__ = {
 }
 
 [node name="Shape" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -5.23814, 4.67693 )
+position = Vector2( -4.78502, 0.159904 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -157,7 +157,6 @@ func doInput(rev, delta):
 	last_inputs = cmds
 
 	tryAttacks(rev,delta)
-
 	
 	if(charge_command == "ranged" and charge_time > RANGED_CHARGE_TWO):
 		get_node("Idle").modulate = Color(0.5,0.5,1)
@@ -180,8 +179,11 @@ func spawnHitMarker(pos):
 
 func pointHurt(rev,pos,kb):
 	var space_state = get_world_2d().direct_space_state
-	
-	var result = space_state.intersect_ray(global_position, pos, [], 2, true, true)
+	var layer = 2
+	if(rev == -1):
+		layer = 1
+	var result = space_state.intersect_ray(global_position, pos, [], layer, true, true)
+
 	if(result):
 		if("Mob" in result.collider.get_parent().name):
 			result.collider.get_parent().queue_free()

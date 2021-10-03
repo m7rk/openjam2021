@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame0005.png-1da09b90d9b81b0b6e02551fd053e37e.stex"
+path="res://.import/frame0005.png-ef4d99cbff5efa9011776ac0202aec14.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RATMAN/frame0005.png"
-dest_files=[ "res://.import/frame0005.png-1da09b90d9b81b0b6e02551fd053e37e.stex" ]
+source_file="res://ratman/frame0005.png"
+dest_files=[ "res://.import/frame0005.png-ef4d99cbff5efa9011776ac0202aec14.stex" ]
 
 [params]
 
