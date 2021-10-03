@@ -14,6 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	get_node("Line/Marker").anchor_left = 0.1 + (get_node("../Player").global_position.x / 8000) * 0.8
+	
 	var ctr = 0
 	for i in get_node("Player").get_children():
 		if (ctr < get_node("../Player").hp):
@@ -23,7 +26,6 @@ func _process(delta):
 		ctr += 1
 
 	ctr = 0
-
 	for i in get_node("Enemy").get_children():
 		i.visible = (get_node("../Enemy").fight_started)
 

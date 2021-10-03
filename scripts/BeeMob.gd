@@ -19,7 +19,7 @@ func _process(delta):
 	if(can_dive_bomb and dist < DIVE_BOMB_DIST):
 		global_position.x -= delta * 2 *  BEE_SPEED
 		global_position.y += delta * BEE_SPEED
-		if(get_node("AnimatedSprite").frame == 10):
+		if(get_node("AnimatedSprite").frame == 9):
 			get_node("AnimatedSprite").frame = 6
 			
 	elif(dist < WAKEUP):

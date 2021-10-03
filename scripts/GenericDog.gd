@@ -46,15 +46,15 @@ const POUNCE_ATTACK_VEL_BOOSTY = -300
 const POUNCE_ATTACK_KNOCKBACK = 1200
 
 const RANGED_ATTACK_HIT = 0.5
-const RANGED_CHARGE_ONE = 0.5
-const RANGED_CHARGE_TWO = 1.0
+const RANGED_CHARGE_ONE = 0.2
+const RANGED_CHARGE_TWO = 0.7
 const RANGED_COOLDOWN = 0.8
 const RANGED_LAUNCH = 0.3
 
 const FRISBEE_SPEED_X = 300
 const FRISBEE_SPEED_Y = 150
 
-const BALL_SPEED_X = 200
+const BALL_SPEED_X = 100
 const BALL_SPEED_Y = 400
 
 const BACKUP_SPEED_RATIO = 0.7
@@ -219,6 +219,7 @@ func tryRangedAttack(rev, delta):
 		if(charge_time >= RANGED_CHARGE_TWO):
 			v = ball.instance()
 			v.velocity = Vector2(rev * BALL_SPEED_X,-BALL_SPEED_Y)
+			v.team = rev
 		else:
 			v = frisbee.instance()
 			v.linear_velocity = Vector2(rev * FRISBEE_SPEED_X,-FRISBEE_SPEED_Y)
