@@ -2,10 +2,14 @@ extends "res://scripts/GenericDog.gd"
 
 var move_time = 1
 var fight_started = false
+var dialog_started = false
+var dialog_timer = 2
 
 func _physics_process(delta):
 	
-	
+	if(dialog_started):
+		dialog_timer -= delta
+
 	move_time -= delta
 	if(move_time < 0):
 		var targ = int(rand_range(0,4))
@@ -26,9 +30,15 @@ func _physics_process(delta):
 	
 	if(dist > 400 && move_time > 0.4):
 		cmds.append("ranged")
-		
-	if(abs(get_node("../Player").global_position.x - global_position.x) < 700):
+	
+	if(!dialog_started and abs(get_node("../Player").global_position.x - global_position.x) < 600):
+		dialog_started = true
+		get_node("Dialog").visible = true
+	
+	if(dialog_timer < 0 and dialog_timer + delta >= 0):
 		fight_started = true
+		get_node("TalkWall").queue_free()
+		get_node("Dialog").visible = false
 	
 	if(hp <= 0):
 		get_node("HEAD").disabled = true
