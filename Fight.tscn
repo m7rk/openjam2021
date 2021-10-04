@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -35,6 +35,13 @@
 [ext_resource path="res://music/Loop.ogg" type="AudioStream" id=33]
 [ext_resource path="res://music/Intro.ogg" type="AudioStream" id=34]
 [ext_resource path="res://scripts/AudioManager.gd" type="Script" id=35]
+[ext_resource path="res://sound/bite.wav" type="AudioStream" id=36]
+[ext_resource path="res://sound/flag.wav" type="AudioStream" id=37]
+[ext_resource path="res://sound/hit_hurt.wav" type="AudioStream" id=38]
+[ext_resource path="res://damageframes/damage.tres" type="SpriteFrames" id=39]
+[ext_resource path="res://sit/sit.tres" type="SpriteFrames" id=40]
+[ext_resource path="res://scripts/Checkpoint.gd" type="Script" id=41]
+[ext_resource path="res://checkpoint/checkpoint.tres" type="SpriteFrames" id=42]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
@@ -284,7 +291,6 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -311,7 +317,7 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 3
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -338,7 +344,7 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 3
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -362,6 +368,28 @@ __meta__ = {
 }
 
 [node name="MoveEffects" type="Node2D" parent="."]
+
+[node name="Flags" type="Node2D" parent="."]
+
+[node name="2" type="AnimatedSprite" parent="Flags"]
+position = Vector2( 10000, 440 )
+scale = Vector2( 0.4, 0.4 )
+frames = ExtResource( 42 )
+offset = Vector2( 0.4, 0.4 )
+script = ExtResource( 41 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Flags/2"]
+stream = ExtResource( 37 )
+
+[node name="3" type="AnimatedSprite" parent="Flags"]
+position = Vector2( 20000, 440 )
+scale = Vector2( 0.4, 0.4 )
+frames = ExtResource( 42 )
+offset = Vector2( 0.4, 0.4 )
+script = ExtResource( 41 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Flags/3"]
+stream = ExtResource( 37 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 position = Vector2( 8065.8, 418.602 )
@@ -390,6 +418,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
+frame = 9
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -400,7 +429,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 2
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -410,7 +439,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 17
+frame = 10
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -421,7 +450,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 4
+frame = 9
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -432,7 +461,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 4
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -443,7 +472,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 2
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -477,12 +506,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Damage" type="AnimatedSprite" parent="Enemy"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -22, 0 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 39 )
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitHurt" type="AudioStreamPlayer2D" parent="Enemy"]
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 38 )
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="Enemy"]
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 36 )
+
+[node name="Heal" type="AudioStreamPlayer2D" parent="Enemy"]
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 37 )
+
+[node name="Sit" type="AnimatedSprite" parent="Enemy"]
+visible = false
+position = Vector2( -7, -9 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 40 )
+frame = 1
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 228.127, 371.939 )
 collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="HEAD" type="CollisionShape2D" parent="Player"]
+visible = false
 position = Vector2( 33.3334, -24.3334 )
 scale = Vector2( 5, 5 )
 shape = SubResource( 3 )
@@ -491,6 +556,7 @@ __meta__ = {
 }
 
 [node name="BODY" type="CollisionShape2D" parent="Player"]
+visible = false
 position = Vector2( -17, 16.6667 )
 scale = Vector2( 8, 5 )
 shape = SubResource( 4 )
@@ -499,10 +565,11 @@ __meta__ = {
 }
 
 [node name="Pounce" type="AnimatedSprite" parent="Player"]
+visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 8
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -510,10 +577,11 @@ __meta__ = {
 }
 
 [node name="Bite" type="AnimatedSprite" parent="Player"]
+visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 1
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -523,7 +591,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 9
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -531,10 +599,11 @@ __meta__ = {
 }
 
 [node name="Walk" type="AnimatedSprite" parent="Player"]
+visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 2
+frame = 7
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -542,12 +611,49 @@ __meta__ = {
 }
 
 [node name="Projectile" type="AnimatedSprite" parent="Player"]
+visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 1
+frame = 4
 speed_scale = 1.5
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Damage" type="AnimatedSprite" parent="Player"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -22, 0 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 39 )
+speed_scale = 25.0
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitHurt" type="AudioStreamPlayer2D" parent="Player"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 38 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="Player"]
+visible = false
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 36 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Heal" type="AudioStreamPlayer2D" parent="Player"]
+visible = false
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 37 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -557,7 +663,19 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 9
+frame = 10
+speed_scale = 1.5
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sit" type="AnimatedSprite" parent="Player"]
+visible = false
+position = Vector2( -330, 6 )
+scale = Vector2( 0.4, 0.4 )
+frames = ExtResource( 40 )
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -744,7 +862,7 @@ __meta__ = {
 anchor_left = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.662
-margin_top = 20.0
+margin_top = 65.0
 texture = ExtResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -752,11 +870,14 @@ __meta__ = {
 
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
 
+[node name="TextureRect" parent="Transitioner" index="0"]
+visible = false
+
 [node name="IntroAnim" type="AnimatedSprite" parent="."]
 position = Vector2( -260, 382.366 )
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 30 )
-frame = 1
+frame = 9
 playing = true
 
 [node name="IntroPlayer" type="AnimationPlayer" parent="."]
@@ -766,6 +887,7 @@ anims/Intro = SubResource( 10 )
 position = Vector2( 15000, -50 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 31 )
+frame = 2
 speed_scale = 4.0
 playing = true
 
