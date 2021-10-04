@@ -5,7 +5,31 @@ var fight_started = false
 var dialog_started = false
 var dialog_timer = 2
 
-var EASINESS = 0.3
+var EASINESS = 0.7
+var dialogue = "BACK OFF! THE STICK IS MINE!"
+
+
+func _ready():
+	if(Progress.progress == 2):
+		respawn()
+
+func respawn():
+	global_position.x = 28000
+	global_position.y = 250
+	EASINESS = 0.4
+	hp = 4
+	fight_started = false
+	dialog_started = false
+	dialog_timer = 2
+	
+	dialogue = "YOU THOUGHT IT WOULD BE THAT EASY, HUH?"
+	
+	get_node("Dialog").visible = true
+	get_node("TalkWall").visible = true
+	get_node("Dialog").visible = true
+	
+	get_node("HEAD").disabled = false
+	get_node("BODY").disabled = false
 
 func _physics_process(delta):
 	
@@ -39,7 +63,7 @@ func _physics_process(delta):
 	
 	if(dialog_timer < 0 and dialog_timer + delta >= 0):
 		fight_started = true
-		get_node("TalkWall").queue_free()
+		get_node("TalkWall").visible = false
 		get_node("Dialog").visible = false
 	
 	if(hp <= 0):
