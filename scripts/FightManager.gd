@@ -10,7 +10,6 @@ func _ready():
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
 	if(Progress.progress == 0):
 		trans_time += 15
-		Progress.progress = 1
 		get_node("IntroPlayer").play("Intro")
 	
 func triggerHitTime():
@@ -23,8 +22,11 @@ func _process(delta):
 	trans_time -= delta
 	hittime -= delta
 	
+	# fuck lol
+	if(trans_time + delta > 4 and trans_time <= 4 and get_node("Player").hp > 0):
+		Progress.progress = 1
+		
 	if(trans_time + delta > 2.1 and trans_time <= 2.1 and get_node("Player").hp > 0):
-		print("TRIG")
 		get_node("CanvasLayer/Display/AnimationPlayer").play("roundstart")
 	
 	if(hittime <= 0):

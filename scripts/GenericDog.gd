@@ -118,6 +118,8 @@ func setAnim(anim,rev):
 	get_node("Walk").visible = (anim == "Walk")
 	get_node("Reverse").visible = (anim == "Reverse")
 	get_node("Projectile").visible = (anim == "Projectile")
+	get_node("Damage").visible = (anim == "Damage")
+	get_node("Sit").visible = (anim == "Sit")
 
 func getActiveAnim():
 	var anims = ["Pounce","Bite","Idle","Walk","Reverse","Projectile"]
@@ -168,7 +170,9 @@ func doInput(rev, delta):
 	
 	updateAnimator(rev)
 		
-	if(get_node("../").trans_time  > 0):
+	if(get_node("../").trans_time > 0):
+		if(Progress.progress == 0):
+			setAnim("Sit", 1)
 		return
 	
 	time_elapsed += delta
