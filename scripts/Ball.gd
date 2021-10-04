@@ -6,20 +6,25 @@ extends KinematicBody2D
 var velocity = Vector2.ZERO
 var bounces = 2
 var team = 1
+onready var impact = preload("res://Impact.tscn")
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	connect("body_entered", self, "_on_body_entered")
-	pass # Replace with function body.
+func impactSound():
+	var v = impact.instance()
+	get_parent().add_child(v)
+	v.global_position = global_position
+
 
 func _process(delta):
 	var body = move_and_collide(velocity * delta)
 	if(body):
 		if(body.collider.name == "Player" and team == -1):
 			body.collider.catch()
+			impactSound()
 			queue_free()
 		if(body.collider.name == "Enemy"):
 			body.collider.catch()
+			impactSound()
 			queue_free()
 		# bounce
 		bounces -= 1

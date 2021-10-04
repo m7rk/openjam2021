@@ -40,3 +40,4 @@ func _on_Area2D_body_entered(body):
 		queue_free()
 		if(body.name == "Ball" or body.name == "Frisbee"):
 			body.queue_free()
+			body.impactSound()
