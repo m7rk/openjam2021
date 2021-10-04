@@ -1,3 +1,3 @@
 extends Node
 
-var progress = 1
+var progress = 0

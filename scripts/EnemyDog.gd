@@ -5,7 +5,7 @@ var fight_started = false
 var dialog_started = false
 var dialog_timer = 2
 
-var EASINESS = 0.2
+var EASINESS = 0.3
 
 func _physics_process(delta):
 	
@@ -27,7 +27,7 @@ func _physics_process(delta):
 	
 	var dist = abs(global_position.x - get_node("../Player").global_position.x)
 	
-	if(dist < 190):
+	if(dist < 210):
 		cmds.append("close")
 	
 	if(dist > 400 && move_time > 0.4):
