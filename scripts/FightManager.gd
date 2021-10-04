@@ -41,11 +41,11 @@ func _process(delta):
 		if(trans_time < 1):
 			 get_tree().reload_current_scene()
 	
-	if(get_node("Player").position.x > 9000):
+	if(get_node("Player").position.x > 30000):
 		trans_time = 4
 		get_node("CanvasLayer/Display/AnimationPlayer").play("roundwin")
 		if(trans_time < 2):
 			get_node("Transitioner/AnimationPlayer").play("starttrans")
 		if(trans_time < 1):
-			 get_tree().reload_current_scene()
+			 get_tree().change_scene("res://End.tscn")
 

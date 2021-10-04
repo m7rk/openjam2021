@@ -17,7 +17,7 @@ func _process(delta):
 		return
 
 	var targ = Vector2(250 + (get_node("../Enemy").global_position.x + get_node("../Player").global_position.x)/2, 250 )
-	var offset = targ.x - get_node("../Player").global_position.x
+	var offset = abs(targ.x - get_node("../Player").global_position.x)
 	
 	if(offset > 550 or (get_node("../Enemy").hp <= 0)):
 		targ.x = get_node("../Player").global_position.x + 550

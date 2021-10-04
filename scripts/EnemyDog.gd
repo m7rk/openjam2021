@@ -5,6 +5,8 @@ var fight_started = false
 var dialog_started = false
 var dialog_timer = 2
 
+var EASINESS = 0.2
+
 func _physics_process(delta):
 	
 	if(dialog_started):
@@ -15,13 +17,13 @@ func _physics_process(delta):
 		var targ = int(rand_range(0,4))
 		if(targ == 0 or targ == 1):
 			cmds = ["right"]
-			move_time = 0.5
+			move_time = 0.5 + EASINESS
 		elif(targ == 2):
 			cmds = ["special"]
-			move_time = 0.1
+			move_time = 0.1 + EASINESS
 		else:
 			cmds = []
-			move_time = 0.3
+			move_time = 0.3 + EASINESS
 	
 	var dist = abs(global_position.x - get_node("../Player").global_position.x)
 	
