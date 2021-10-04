@@ -1,16 +1,18 @@
 extends Node2D
 
 
-var trans_time = 2.1 + 5
+var trans_time = 2.1
 
 var hittime = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("CanvasLayer/Display/AnimationPlayer").play("roundstart")
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
 	get_node("IntroAnim").play("Intro")
 	get_node("IntroPlayer").play("Intro")
+	if(Progress.progress == 0):
+		trans_time += 15
+	
 func triggerHitTime():
 	hittime = 0.03
 	Engine.time_scale = 0.05
@@ -20,6 +22,10 @@ func triggerHitTime():
 func _process(delta):
 	trans_time -= delta
 	hittime -= delta
+	
+	if(trans_time + delta > 2.1 and trans_time <= 2.1):
+		print("TRIG")
+		get_node("CanvasLayer/Display/AnimationPlayer").play("roundstart")
 	
 	if(hittime <= 0):
 		Engine.time_scale = 1

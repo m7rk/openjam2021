@@ -14,6 +14,10 @@ config/name="Jam 2021"
 run/main_scene="res://Fight.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Progress="*res://scripts/Progress.gd"
+
 [display]
 
 window/size/width=900
