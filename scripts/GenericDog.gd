@@ -60,7 +60,7 @@ const FRISBEE_SPEED_Y = 150
 const BALL_SPEED_X = 100
 const BALL_SPEED_Y = 400
 
-const BACKUP_SPEED_RATIO = 0.5
+const BACKUP_SPEED_RATIO = 0.7
 
 const DASH_DETECTION_TIME = 0.1
 const DASH_VELOCITY = 2000
@@ -280,6 +280,8 @@ func tryRangedAttack(rev, delta):
 			v = frisbee.instance()
 			v.linear_velocity = Vector2(rev * FRISBEE_SPEED_X,-FRISBEE_SPEED_Y)
 		get_node("../Projectiles").add_child(v)
+		
+		get_node("Launch").play()
 		v.global_position = global_position + Vector2(rev * 90,-50)
 		charge_command = ""
 		charge_time = 0

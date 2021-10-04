@@ -15,7 +15,7 @@ func impactSound():
 	v.global_position = global_position
 
 
-func _process(delta):
+func _physics_process(delta):
 	var body = move_and_collide(velocity * delta)
 	if(body):
 		if(body.collider.name == "Player" and team == -1):
@@ -31,5 +31,4 @@ func _process(delta):
 		if(bounces == 0):
 			queue_free()
 		velocity.y = -velocity.y
-		position.y -= 10
 	velocity += Vector2(0,10)

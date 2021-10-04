@@ -10,6 +10,7 @@ func _ready():
 		get_node("Intro").playing = true
 	else:
 		get_node("Loop").playing = true
+		get_node("Loop").seek(Progress.loop_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -53,7 +53,8 @@ func _process(delta):
 		if(trans_time < 2):
 			get_node("Transitioner/AnimationPlayer").play("starttrans")
 		if(trans_time < 1):
-			 get_tree().reload_current_scene()
+			Progress.loop_pos = get_node("Audio/Loop").get_playback_position()
+			get_tree().reload_current_scene()
 	
 
 

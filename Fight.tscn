@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://checkpoint/checkpoint.tres" type="SpriteFrames" id=42]
 [ext_resource path="res://ui/stamina_g.png" type="Texture" id=43]
 [ext_resource path="res://ui/stamina_u.png" type="Texture" id=44]
+[ext_resource path="res://sound/launch.wav" type="AudioStream" id=45]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
@@ -181,7 +182,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "YOU WON LOL" ]
+"values": [ "YOU GOT IT!" ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -639,7 +640,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 1
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -660,7 +661,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 14
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -671,7 +672,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 4
+frame = 6
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -682,7 +683,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 7
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -693,7 +694,6 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -722,7 +722,6 @@ margin_bottom = 105.517
 rect_scale = Vector2( 0.7, 0.7 )
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "lorem ipsum!!!!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -732,7 +731,6 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
-frame = 3
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -755,6 +753,15 @@ scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 40 )
 speed_scale = 1.5
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Launch" type="AudioStreamPlayer2D" parent="Enemy"]
+visible = false
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 45 )
+volume_db = -5.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -787,7 +794,6 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 9
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -809,7 +815,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 6
+frame = 21
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -821,7 +827,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 2
+frame = 4
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -833,7 +839,7 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 2
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -845,7 +851,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
-frame = 4
+frame = 1
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -877,12 +883,21 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Launch" type="AudioStreamPlayer2D" parent="Player"]
+visible = false
+position = Vector2( -228.127, -371.939 )
+stream = ExtResource( 45 )
+volume_db = -5.0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Reverse" type="AnimatedSprite" parent="Player"]
 visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 1
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -936,9 +951,6 @@ position = Vector2( 6367.38, 300 )
 [node name="BeeMob11Up2" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 11218.4, 300 )
 
-[node name="BeeMob12Up2" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 11318.4, 300 )
-
 [node name="BeeMob13Up2" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 11418.4, 300 )
 
@@ -947,9 +959,6 @@ position = Vector2( 14727.4, 300 )
 
 [node name="BeeMob12Up3" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 14827.4, 300 )
-
-[node name="BeeMob13Up3" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 14927.4, 300 )
 
 [node name="BeeMob11Up4" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 21458, 300 )
@@ -960,9 +969,6 @@ position = Vector2( 21558, 300 )
 [node name="BeeMob13Up4" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 21658, 300 )
 
-[node name="BeeMob11Up5" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 23282, 300 )
-
 [node name="BeeMob12Up5" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 23382, 300 )
 
@@ -971,9 +977,6 @@ position = Vector2( 23482, 300 )
 
 [node name="BeeMob11Up6" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 26866, 300 )
-
-[node name="BeeMob12Up6" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 26966, 300 )
 
 [node name="BeeMob13Up6" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 27066, 300 )
@@ -986,9 +989,6 @@ position = Vector2( 11718.8, 420 )
 
 [node name="BeeMob16" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 21010.1, 420 )
-
-[node name="BeeMob17" parent="Mobs" instance=ExtResource( 22 )]
-position = Vector2( 21110.1, 420 )
 
 [node name="BeeMob18" parent="Mobs" instance=ExtResource( 22 )]
 position = Vector2( 22498.7, 420 )
@@ -1023,9 +1023,6 @@ position = Vector2( 5500, 437 )
 [node name="RatMob3" parent="Mobs" instance=ExtResource( 24 )]
 position = Vector2( 8835.2, 439.289 )
 
-[node name="RatMob4" parent="Mobs" instance=ExtResource( 24 )]
-position = Vector2( 13028.3, 435.712 )
-
 [node name="RatMob5" parent="Mobs" instance=ExtResource( 24 )]
 position = Vector2( 12528.3, 435.712 )
 
@@ -1040,9 +1037,6 @@ position = Vector2( 12737.4, 437.125 )
 
 [node name="RatMob9" parent="Mobs" instance=ExtResource( 24 )]
 position = Vector2( 15675.7, 434.006 )
-
-[node name="RatMob10" parent="Mobs" instance=ExtResource( 24 )]
-position = Vector2( 25187.2, 438.001 )
 
 [node name="RatMob11" parent="Mobs" instance=ExtResource( 24 )]
 position = Vector2( 24684.4, 434.152 )
@@ -1071,10 +1065,6 @@ linear_velocity = Vector2( 30, 30 )
 
 [node name="Frisbee5" parent="Mobs" instance=ExtResource( 29 )]
 position = Vector2( 15214.8, 177.979 )
-linear_velocity = Vector2( 30, 30 )
-
-[node name="Frisbee6" parent="Mobs" instance=ExtResource( 29 )]
-position = Vector2( 22319.8, 357.485 )
 linear_velocity = Vector2( 30, 30 )
 
 [node name="Frisbee7" parent="Mobs" instance=ExtResource( 29 )]
@@ -1239,7 +1229,7 @@ anims/Intro = SubResource( 10 )
 position = Vector2( 15000, -50 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 31 )
-frame = 3
+frame = 4
 speed_scale = 4.0
 playing = true
 

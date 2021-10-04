@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/endgame.png-d724f988c2c78c3121b3d458d32bb7e7.stex"
+path="res://.import/cover image.png-4e880bf9898aebfc4f782b6a6bd31474.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://misc/endgame.png"
-dest_files=[ "res://.import/endgame.png-d724f988c2c78c3121b3d458d32bb7e7.stex" ]
+source_file="res://cover image.png"
+dest_files=[ "res://.import/cover image.png-4e880bf9898aebfc4f782b6a6bd31474.stex" ]
 
 [params]
 

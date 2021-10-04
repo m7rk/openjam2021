@@ -1,24 +1,38 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://misc/endgame.png" type="Texture" id=1]
+[ext_resource path="res://misc/end slate.png" type="Texture" id=1]
 [ext_resource path="res://font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://music/Outro.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Transitioner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://End.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 450, 280 )
-texture = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 638.503
-margin_top = 185.053
-margin_right = 839.503
-margin_bottom = 250.053
+margin_left = 528.319
+margin_top = 153.269
+margin_right = 729.319
+margin_bottom = 218.269
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "THE END"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 378.581
+margin_top = 266.985
+margin_right = 1381.58
+margin_bottom = 467.985
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "DEMO ARGENTI - COMPOSER, SOUND DESIGN
+KRONDURE - ART
+M7RK - CODE"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,3 +42,10 @@ stream = ExtResource( 3 )
 autoplay = true
 
 [node name="Transitioner" parent="." instance=ExtResource( 4 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 212.599, 246.502 )
+scale = Vector2( 0.580675, 0.642922 )
+texture = ExtResource( 1 )
+
+[editable path="Transitioner"]
