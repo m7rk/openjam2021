@@ -18,6 +18,8 @@ var cooldown = 0
 # which attack did we just execute?
 var attack_executed = ""
 
+var stamina = 100
+
 var time_elapsed = 0
 var last_inputs = []
 var last_l_depress = 0
@@ -61,8 +63,11 @@ const BALL_SPEED_Y = 400
 const BACKUP_SPEED_RATIO = 0.5
 
 const DASH_DETECTION_TIME = 0.1
-const DASH_VELOCITY = 1500
+const DASH_VELOCITY = 2000
 const DASH_COOLDOWN = 0.4
+const DASH_STAMINA = 60
+
+const STAMINA_REGEN = 50
 
 const VEL_ANIM_THRESH = 20
 
@@ -99,6 +104,9 @@ func _ready():
 	setAnim("Idle",1)
 
 func checkForDash(rev):
+	if(stamina < DASH_STAMINA):
+		return
+	
 		# check for dash
 	if("right" in last_inputs and not "right" in cmds):
 		last_r_depress = time_elapsed
@@ -110,11 +118,13 @@ func checkForDash(rev):
 		attack_executed = "dash"
 		cooldown = DASH_COOLDOWN
 		velocity.x += DASH_VELOCITY * rev
+		stamina -= DASH_STAMINA
 		
 	if("left" in cmds and time_elapsed - last_l_depress < DASH_DETECTION_TIME):
 		attack_executed = "dash"
 		cooldown = DASH_COOLDOWN
-		velocity.x -= (DASH_VELOCITY * BACKUP_SPEED_RATIO) * rev
+		velocity.x -= (DASH_VELOCITY / 2) * rev
+		stamina -= DASH_STAMINA
 
 func setAnim(anim,rev):
 	get_node("Pounce").visible = (anim == "Pounce")
@@ -152,8 +162,6 @@ func doInput(rev, delta):
 		if(hurtTime == 0.04):
 			print("0")
 			get_node("Damage").frame = 4
-			print("--:")
-		print("F" + str(get_node("Damage").frame))
 		hurtTime -= delta
 		setAnim("Damage",rev)
 		return
@@ -211,6 +219,8 @@ func doInput(rev, delta):
 		velocity.x += delta * MOVESPEED * rev
 	if("left" in cmds):
 		velocity.x -= delta * (MOVESPEED * BACKUP_SPEED_RATIO) * rev
+	if(not "left" in cmds and not "right" in cmds):
+		stamina = min(stamina + delta * STAMINA_REGEN, 100)
 
 func spawnHitMarker(pos):
 	var d = damagefx.instance()
@@ -230,7 +240,7 @@ func pointHurt(rev,pos,kb):
 	
 	# try hitting thrice
 	for i in range(3):
-		var result = space_state.intersect_ray(pos - Vector2(10,0), pos + Vector2(0,i*-15), [], layer, true, true)
+		var result = space_state.intersect_ray(pos - Vector2(rev * 10,0), pos + Vector2(0,i*-15), [], layer, true, true)
 
 		if(result):
 			if("Mob" in result.collider.get_parent().name):
@@ -292,7 +302,9 @@ func trySpecialAttack(rev,delta):
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown < POUNCE_ATTACK_LAUNCH):	
 		if(not attack_consumed):
 			addMoveEffect(global_position)
-			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 100,-5), POUNCE_ATTACK_KNOCKBACK)
+			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 130,-15), POUNCE_ATTACK_KNOCKBACK)
+			if(not attack_consumed):
+				attack_consumed = pointHurt(rev, global_position + Vector2(rev * 130,40), POUNCE_ATTACK_KNOCKBACK)
 	
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_LAUNCH and cooldown - delta <= POUNCE_ATTACK_LAUNCH):
 		velocity.x += POUNCE_ATTACK_VEL_BOOSTX * rev

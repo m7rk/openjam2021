@@ -7,6 +7,8 @@ extends CanvasLayer
 onready var full = preload("res://ui/health.png")
 onready var empty = preload("res://ui/unhealth.png")
 
+var t = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,6 +16,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	t += delta
+	
+	get_node("Stamina").value = get_node("../Player").stamina + sin(t * 4)
 	
 	get_node("Line/Marker").anchor_left = 0.015 + (get_node("../Player").global_position.x / 30000) * 0.9
 	

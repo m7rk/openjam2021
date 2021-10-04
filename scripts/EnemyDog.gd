@@ -10,7 +10,7 @@ var dialogue = "BACK OFF! THE STICK IS MINE!"
 
 
 func _ready():
-	if(Progress.progress == 2):
+	if(Progress.progress == 3):
 		respawn()
 
 func respawn():
@@ -22,7 +22,7 @@ func respawn():
 	dialog_started = false
 	dialog_timer = 2
 	
-	dialogue = "YOU THOUGHT IT WOULD BE THAT EASY, HUH?"
+	dialogue = "Another dog! Finally, someone I can play ruff with."
 	
 	get_node("Dialog").visible = true
 	get_node("TalkWall").visible = true

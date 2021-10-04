@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -42,6 +42,8 @@
 [ext_resource path="res://sit/sit.tres" type="SpriteFrames" id=40]
 [ext_resource path="res://scripts/Checkpoint.gd" type="Script" id=41]
 [ext_resource path="res://checkpoint/checkpoint.tres" type="SpriteFrames" id=42]
+[ext_resource path="res://ui/stamina_g.png" type="Texture" id=43]
+[ext_resource path="res://ui/stamina_u.png" type="Texture" id=44]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
@@ -351,19 +353,20 @@ position = Vector2( 3270, 274.731 )
 scale = Vector2( -0.7, 0.7 )
 texture = ExtResource( 17 )
 
-[node name="TutorialDog" type="AnimatedSprite" parent="."]
+[node name="TutorialDogs" type="Node2D" parent="."]
+
+[node name="TutorialDog" type="AnimatedSprite" parent="TutorialDogs"]
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 5
 playing = true
 script = ExtResource( 21 )
 
-[node name="Sprite" type="Sprite" parent="TutorialDog"]
+[node name="Sprite" type="Sprite" parent="TutorialDogs/TutorialDog"]
 position = Vector2( 331.055, -255.426 )
 texture = ExtResource( 20 )
 
-[node name="Label" type="Label" parent="TutorialDog"]
+[node name="Label" type="Label" parent="TutorialDogs/TutorialDog"]
 margin_left = 164.0
 margin_top = -355.0
 margin_right = 529.0
@@ -378,19 +381,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TutorialDog2" type="AnimatedSprite" parent="."]
+[node name="TutorialDog2" type="AnimatedSprite" parent="TutorialDogs"]
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
-[node name="Sprite" type="Sprite" parent="TutorialDog2"]
+[node name="Sprite" type="Sprite" parent="TutorialDogs/TutorialDog2"]
 position = Vector2( 331.055, -255.426 )
 texture = ExtResource( 20 )
 
-[node name="Label" type="Label" parent="TutorialDog2"]
+[node name="Label" type="Label" parent="TutorialDogs/TutorialDog2"]
 margin_left = 153.213
 margin_top = -347.809
 margin_right = 709.213
@@ -405,19 +408,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TutorialDog3" type="AnimatedSprite" parent="."]
+[node name="TutorialDog3" type="AnimatedSprite" parent="TutorialDogs"]
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
-[node name="Sprite" type="Sprite" parent="TutorialDog3"]
+[node name="Sprite" type="Sprite" parent="TutorialDogs/TutorialDog3"]
 position = Vector2( 331.055, -255.426 )
 texture = ExtResource( 20 )
 
-[node name="Label" type="Label" parent="TutorialDog3"]
+[node name="Label" type="Label" parent="TutorialDogs/TutorialDog3"]
 margin_left = 153.213
 margin_top = -347.809
 margin_right = 709.213
@@ -432,19 +435,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TutorialDog4" type="AnimatedSprite" parent="."]
+[node name="TutorialDog4" type="AnimatedSprite" parent="TutorialDogs"]
 position = Vector2( 4500, 441 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
-[node name="Sprite" type="Sprite" parent="TutorialDog4"]
+[node name="Sprite" type="Sprite" parent="TutorialDogs/TutorialDog4"]
 position = Vector2( 331.055, -255.426 )
 texture = ExtResource( 20 )
 
-[node name="Label" type="Label" parent="TutorialDog4"]
+[node name="Label" type="Label" parent="TutorialDogs/TutorialDog4"]
 margin_left = 153.213
 margin_top = -347.809
 margin_right = 709.213
@@ -455,6 +458,86 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Rats are a huge
 problem round these 
 parts. Hit them twice!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialDog5" type="AnimatedSprite" parent="TutorialDogs"]
+position = Vector2( 9696.26, 443 )
+scale = Vector2( 0.35, 0.35 )
+frames = ExtResource( 18 )
+frame = 5
+playing = true
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="TutorialDogs/TutorialDog5"]
+position = Vector2( 331.055, -255.426 )
+texture = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="TutorialDogs/TutorialDog5"]
+margin_left = 153.213
+margin_top = -347.809
+margin_right = 709.213
+margin_bottom = -146.809
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Aren't you glad I didn't
+put a boss here?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialDog6" type="AnimatedSprite" parent="TutorialDogs"]
+position = Vector2( 16102.6, 442.363 )
+scale = Vector2( 0.35, 0.35 )
+frames = ExtResource( 18 )
+frame = 4
+playing = true
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="TutorialDogs/TutorialDog6"]
+position = Vector2( 331.055, -255.426 )
+texture = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="TutorialDogs/TutorialDog6"]
+margin_left = 153.213
+margin_top = -347.809
+margin_right = 709.213
+margin_bottom = -146.809
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Is it just me.... or do
+all these trees look
+EXACTLY THE SAME??"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialDog7" type="AnimatedSprite" parent="TutorialDogs"]
+position = Vector2( 19629.1, 443.241 )
+scale = Vector2( 0.35, 0.35 )
+frames = ExtResource( 18 )
+frame = 4
+playing = true
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="TutorialDogs/TutorialDog7"]
+position = Vector2( 331.055, -255.426 )
+texture = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="TutorialDogs/TutorialDog7"]
+margin_left = 153.213
+margin_top = -347.809
+margin_right = 709.213
+margin_bottom = -146.809
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Really sorry that the
+pounce ability is bad.
+Just don't press L."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -557,6 +640,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -567,7 +651,6 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -577,7 +660,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 21
+frame = 11
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -588,7 +671,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 9
+frame = 5
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -599,7 +682,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 5
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -610,7 +693,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 2
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -649,6 +732,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
+frame = 2
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -669,7 +753,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 40 )
-frame = 4
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -704,7 +788,7 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 8
+frame = 10
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -716,7 +800,7 @@ visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 1
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -726,7 +810,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 13
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -738,7 +822,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 7
+frame = 3
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -750,7 +834,7 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 1
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -762,7 +846,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
-frame = 1
+frame = 3
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -799,7 +883,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 10
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -811,7 +895,6 @@ visible = false
 position = Vector2( -330, 6 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 40 )
-frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -1138,7 +1221,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Stamina" type="TextureProgress" parent="CanvasLayer"]
+margin_left = 8.24854
+margin_top = 57.7818
+margin_right = 408.249
+margin_bottom = 157.782
+value = 100.0
+texture_over = ExtResource( 44 )
+texture_progress = ExtResource( 43 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
+
+[node name="TextureRect" parent="Transitioner" index="0"]
+visible = false
 
 [node name="IntroAnim" type="AnimatedSprite" parent="."]
 position = Vector2( -260, 382.366 )
@@ -1152,7 +1250,7 @@ anims/Intro = SubResource( 10 )
 position = Vector2( 15000, -50 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 31 )
-frame = 1
+frame = 2
 speed_scale = 4.0
 playing = true
 
