@@ -5,8 +5,8 @@ var fight_started = false
 var dialog_started = false
 var dialog_timer = 2
 
-var EASINESS = 0.7
-var dialogue = "Another dog! Finally,\n someone I can play ruff with."
+var EASINESS = 0.6
+var dialogue = "Another dog! Finally,\n someone I can play\n ruff with."
 
 var killtimer = 5
 
@@ -58,6 +58,7 @@ func _physics_process(delta):
 		cmds.append("close")
 	
 	if(dist > 400 && move_time > 0.4):
+		cmds = []
 		cmds.append("ranged")
 	
 	if(!dialog_started and abs(get_node("../Player").global_position.x - global_position.x) < 600):
