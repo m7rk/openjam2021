@@ -6,8 +6,9 @@ var dialog_started = false
 var dialog_timer = 2
 
 var EASINESS = 0.7
-var dialogue = "BACK OFF! THE STICK IS MINE!"
+var dialogue = "Another dog! Finally,\n someone I can play ruff with."
 
+var killtimer = 5
 
 func _ready():
 	if(Progress.progress == 3):
@@ -21,12 +22,14 @@ func respawn():
 	fight_started = false
 	dialog_started = false
 	dialog_timer = 2
+	killtimer = 5
+	get_node("TalkWall").layers = 4
+	#layer 3 (1)(2)(4)
 	
-	dialogue = "Another dog! Finally, someone I can play ruff with."
+	dialogue = "How are those bees\n tasting, eh?"
 	
 	get_node("Dialog").visible = true
 	get_node("TalkWall").visible = true
-	get_node("Dialog").visible = true
 	
 	get_node("HEAD").disabled = false
 	get_node("BODY").disabled = false
@@ -63,10 +66,14 @@ func _physics_process(delta):
 	
 	if(dialog_timer < 0 and dialog_timer + delta >= 0):
 		fight_started = true
-		get_node("TalkWall").visible = false
+		get_node("TalkWall").layers = 0#layer 3 (1)(2)(4_
 		get_node("Dialog").visible = false
+		get_node("Dialog").text = dialogue
 	
 	if(hp <= 0):
+		killtimer -= delta
+		if(killtimer < 0):
+			respawn()
 		get_node("HEAD").disabled = true
 		get_node("BODY").disabled = true
 		cmds = []

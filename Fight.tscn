@@ -359,7 +359,7 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 2
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -386,7 +386,7 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 1
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -413,7 +413,7 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 1
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -440,7 +440,7 @@ __meta__ = {
 position = Vector2( 4500, 441 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 1
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -467,6 +467,7 @@ __meta__ = {
 position = Vector2( 9696.26, 443 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
+frame = 3
 playing = true
 script = ExtResource( 21 )
 
@@ -492,6 +493,7 @@ __meta__ = {
 position = Vector2( 16102.6, 442.363 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
+frame = 3
 playing = true
 script = ExtResource( 21 )
 
@@ -518,7 +520,7 @@ __meta__ = {
 position = Vector2( 19629.1, 443.241 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 5
+frame = 2
 playing = true
 script = ExtResource( 21 )
 
@@ -639,7 +641,6 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -650,7 +651,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 4
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -660,7 +661,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 2
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -671,7 +672,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 8
+frame = 9
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -682,7 +683,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 10
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -693,7 +694,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -752,7 +753,6 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 40 )
-frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -787,7 +787,7 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 9
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -799,7 +799,7 @@ visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -809,7 +809,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 22
+frame = 25
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -821,7 +821,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 6
+frame = 7
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -833,7 +833,7 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 2
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -882,7 +882,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 4
+frame = 10
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -894,7 +894,7 @@ visible = false
 position = Vector2( -330, 6 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 40 )
-frame = 4
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -1054,7 +1054,7 @@ position = Vector2( 23953.9, 433.567 )
 position = Vector2( 24999.4, 434.006 )
 
 [node name="Frisbee" parent="Mobs" instance=ExtResource( 29 )]
-position = Vector2( 8050.85, 116.177 )
+position = Vector2( 8813.66, 281.453 )
 linear_velocity = Vector2( 30, 30 )
 
 [node name="Frisbee2" parent="Mobs" instance=ExtResource( 29 )]
@@ -1082,19 +1082,19 @@ position = Vector2( 22317.3, 276.941 )
 linear_velocity = Vector2( 30, 30 )
 
 [node name="Frisbee8" parent="Mobs" instance=ExtResource( 29 )]
-position = Vector2( 22423, 229.118 )
+position = Vector2( 23603.4, 361.111 )
 linear_velocity = Vector2( 30, 30 )
 
 [node name="Frisbee9" parent="Mobs" instance=ExtResource( 29 )]
-position = Vector2( 22420.5, 148.574 )
+position = Vector2( 23600.9, 280.567 )
 linear_velocity = Vector2( 30, 30 )
 
 [node name="Frisbee10" parent="Mobs" instance=ExtResource( 29 )]
-position = Vector2( 24312, 215.861 )
+position = Vector2( 24486, 274.765 )
 linear_velocity = Vector2( 30, 30 )
 
 [node name="Frisbee11" parent="Mobs" instance=ExtResource( 29 )]
-position = Vector2( 25941.8, 324.269 )
+position = Vector2( 25983.8, 324.269 )
 linear_velocity = Vector2( 30, 30 )
 
 [node name="Projectiles" type="Node2D" parent="."]
@@ -1250,6 +1250,7 @@ anims/Intro = SubResource( 10 )
 position = Vector2( 15000, -50 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 31 )
+frame = 2
 speed_scale = 4.0
 playing = true
 
