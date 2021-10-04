@@ -254,7 +254,7 @@ func tryRangedAttack(rev, delta):
 		charge_command = ""
 		charge_time = 0
 		
-	if("ranged" in cmds):
+	if("ranged" in cmds and cooldown < 0):
 		if(charge_command == ""):
 			charge_command = "ranged"
 		charge_time += delta

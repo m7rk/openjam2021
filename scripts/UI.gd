@@ -15,7 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	get_node("Line/Marker").anchor_left = 0.1 + (get_node("../Player").global_position.x / 28000) * 0.8
+	get_node("Line/Marker").anchor_left = 0.05 + (get_node("../Player").global_position.x / 30000) * 0.9
 	
 	var ctr = 0
 	for i in get_node("Player").get_children():

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/end slate.png-3d304e0c98e3b9c47555c5f4b4741ecb.stex"
+path="res://.import/endgame.png-d724f988c2c78c3121b3d458d32bb7e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://end slate.png"
-dest_files=[ "res://.import/end slate.png-3d304e0c98e3b9c47555c5f4b4741ecb.stex" ]
+source_file="res://misc/endgame.png"
+dest_files=[ "res://.import/endgame.png-d724f988c2c78c3121b3d458d32bb7e7.stex" ]
 
 [params]
 
