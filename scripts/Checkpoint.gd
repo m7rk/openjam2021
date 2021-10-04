@@ -12,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(abs(get_node("../../Player").global_position.x - global_position.x) < CHECKPOINT_DIST):
+	if(not active and abs(get_node("../../Player").global_position.x - global_position.x) < CHECKPOINT_DIST):
 		Progress.progress = int(name)
 		active = true
 	if(not active):

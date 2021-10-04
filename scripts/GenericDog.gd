@@ -48,10 +48,9 @@ const POUNCE_ATTACK_VEL_BOOSTY = -300
 const POUNCE_ATTACK_KNOCKBACK = 1200
 
 const RANGED_ATTACK_HIT = 0.5
-const RANGED_CHARGE_ONE = 0.2
-const RANGED_CHARGE_TWO = 0.7
+const RANGED_CHARGE_ONE = 0.1
+const RANGED_CHARGE_TWO = 0.5
 const RANGED_COOLDOWN = 0.8
-const RANGED_LAUNCH = 0.3
 
 const FRISBEE_SPEED_X = 300
 const FRISBEE_SPEED_Y = 150
@@ -59,7 +58,7 @@ const FRISBEE_SPEED_Y = 150
 const BALL_SPEED_X = 100
 const BALL_SPEED_Y = 400
 
-const BACKUP_SPEED_RATIO = 0.7
+const BACKUP_SPEED_RATIO = 0.5
 
 const DASH_DETECTION_TIME = 0.1
 const DASH_VELOCITY = 1500
@@ -210,15 +209,18 @@ func pointHurt(rev,pos,kb):
 	var layer = 2
 	if(rev == -1):
 		layer = 1
-	var result = space_state.intersect_ray(global_position, pos, [], layer, true, true)
+	
+	# try hitting thrice
+	for i in range(3):
+		var result = space_state.intersect_ray(pos - Vector2(10,0), pos + Vector2(0,i*-15), [], layer, true, true)
 
-	if(result):
-		if("Mob" in result.collider.get_parent().name):
-			result.collider.get_parent().hit()
-		else:
-			result.collider.hit(rev,kb)
-		spawnHitMarker(pos)
-		return true
+		if(result):
+			if("Mob" in result.collider.get_parent().name):
+				result.collider.get_parent().hit()
+			else:
+				result.collider.hit(rev,kb)
+			spawnHitMarker(pos+ Vector2(0,i*-15))
+			return true
 	return false
 
 func tryCloseAttack(rev, delta):
