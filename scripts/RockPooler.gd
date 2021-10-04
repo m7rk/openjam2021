@@ -14,9 +14,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	for i in get_children():
-		if(get_node("../Player").global_position.x - i.global_position.x > 2000):
+		if(get_node("../Camera2D").global_position.x - i.global_position.x > 2000):
 			# scoot up
 			i.global_position.x += (990 * 4)
-		if(get_node("../Player").global_position.x - i.global_position.x < -2000):
+		if(get_node("../Camera2D").global_position.x - i.global_position.x < -2000):
 			# scoot back
 			i.global_position.x -= (990 * 4)

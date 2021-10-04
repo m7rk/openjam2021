@@ -13,6 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(get_node("../").trans_time > 0):
+		return
+	
 	var targ = Vector2((get_node("../Enemy").global_position.x + get_node("../Player").global_position.x)/2, 250 )
 	var offset = targ.x - get_node("../Player").global_position.x
 	

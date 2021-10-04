@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var trans_time = 2.1
+var trans_time = 2.1 + 5
 
 var hittime = 0
 
@@ -9,7 +9,8 @@ var hittime = 0
 func _ready():
 	get_node("CanvasLayer/Display/AnimationPlayer").play("roundstart")
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
-
+	get_node("IntroAnim").play("Intro")
+	get_node("IntroPlayer").play("Intro")
 func triggerHitTime():
 	hittime = 0.03
 	Engine.time_scale = 0.05
