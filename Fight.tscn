@@ -284,7 +284,6 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 1
 playing = true
 script = ExtResource( 21 )
 
@@ -311,6 +310,7 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -337,6 +337,7 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -388,7 +389,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 6
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -399,7 +400,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 4
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -409,7 +410,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 7
+frame = 12
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -420,6 +421,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
+frame = 10
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -441,7 +443,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 2
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -500,7 +502,7 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 2
+frame = 11
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -511,7 +513,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 3
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -521,7 +523,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 27
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -532,7 +534,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 9
+frame = 8
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -543,7 +545,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 1
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -751,7 +753,6 @@ __meta__ = {
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
 
 [node name="TextureRect" parent="Transitioner" index="0"]
-visible = false
 rect_scale = Vector2( 1e-05, 1e-05 )
 
 [node name="IntroAnim" type="AnimatedSprite" parent="."]
@@ -763,11 +764,9 @@ frames = ExtResource( 30 )
 anims/Intro = SubResource( 10 )
 
 [node name="Stick" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 15000, -50 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 31 )
-frame = 3
 speed_scale = 4.0
 playing = true
 

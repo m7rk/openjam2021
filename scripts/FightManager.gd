@@ -9,9 +9,10 @@ var hittime = 0
 func _ready():
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
 	get_node("IntroAnim").play("Intro")
-	get_node("IntroPlayer").play("Intro")
 	if(Progress.progress == 0):
 		trans_time += 15
+		Progress.progress = 1
+		get_node("IntroPlayer").play("Intro")
 	
 func triggerHitTime():
 	hittime = 0.03

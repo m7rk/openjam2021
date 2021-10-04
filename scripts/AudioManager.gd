@@ -6,7 +6,10 @@ extends Node2D
 # var b = "text"
 
 func _ready():
-	get_node("Intro").playing = true
+	if(Progress.progress == 0):
+		get_node("Intro").playing = true
+	else:
+		get_node("Loop").playing = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
