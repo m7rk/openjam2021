@@ -355,7 +355,7 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 2
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -382,7 +382,7 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 1
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -398,9 +398,9 @@ margin_bottom = -146.809
 rect_scale = Vector2( 0.7, 0.7 )
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "You got some mad
-skills, dawg. Press J.
-Press L. HOLD K????!2?"
+text = "Danger ahead! Press J,
+K, or L to see what
+you're capable of!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -409,7 +409,7 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 1
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -427,7 +427,34 @@ custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dont forget to like and
 subscribe if these tips
-were helpful, Good luck."
+were helpful. Okay?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialDog4" type="AnimatedSprite" parent="."]
+position = Vector2( 4500, 441 )
+scale = Vector2( 0.35, 0.35 )
+frames = ExtResource( 18 )
+frame = 4
+playing = true
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="TutorialDog4"]
+position = Vector2( 331.055, -255.426 )
+texture = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="TutorialDog4"]
+margin_left = 153.213
+margin_top = -347.809
+margin_right = 709.213
+margin_bottom = -146.809
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rats are a huge
+problem round these 
+parts. Hit them twice!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -530,7 +557,6 @@ __meta__ = {
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -541,7 +567,7 @@ __meta__ = {
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -551,7 +577,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 3
+frame = 21
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -562,7 +588,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 2
+frame = 9
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -573,7 +599,7 @@ __meta__ = {
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 3
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -584,7 +610,7 @@ __meta__ = {
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 4
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -643,6 +669,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 40 )
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -650,7 +677,7 @@ __meta__ = {
 }
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 228.127, 371.939 )
+position = Vector2( 228.127, 420 )
 collision_mask = 5
 script = ExtResource( 2 )
 
@@ -677,7 +704,7 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 10
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -689,7 +716,7 @@ visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 2
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -699,7 +726,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 23
+frame = 13
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -711,6 +738,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
+frame = 7
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -722,7 +750,7 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 3
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -771,7 +799,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 8
+frame = 10
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -783,7 +811,7 @@ visible = false
 position = Vector2( -330, 6 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 40 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -1124,7 +1152,7 @@ anims/Intro = SubResource( 10 )
 position = Vector2( 15000, -50 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 31 )
-frame = 4
+frame = 1
 speed_scale = 4.0
 playing = true
 
