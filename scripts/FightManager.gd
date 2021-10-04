@@ -1,14 +1,13 @@
 extends Node2D
 
 
-var trans_time = 2.1
+var trans_time = 2.15
 
 var hittime = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
-	get_node("IntroAnim").play("Intro")
 	if(Progress.progress == 0):
 		trans_time += 15
 		Progress.progress = 1
