@@ -160,7 +160,6 @@ func doInput(rev, delta):
 	
 	if(hurtTime > 0):
 		if(hurtTime == 0.04):
-			print("0")
 			get_node("Damage").frame = 4
 		hurtTime -= delta
 		setAnim("Damage",rev)
