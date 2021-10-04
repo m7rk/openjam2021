@@ -8,7 +8,10 @@ extends Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if(Progress.progress == 2):
+		global_position.x = 10000
+	if(Progress.progress == 3):
+		global_position.x = 20000
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

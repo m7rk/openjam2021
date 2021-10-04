@@ -3,6 +3,7 @@ extends RigidBody2D
 
 # Declare member variables here. Examples:
 var WAKE_DIST = 800
+
 # var b = "text"
 onready var impact = preload("res://Impact.tscn")
 

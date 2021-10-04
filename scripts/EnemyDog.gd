@@ -63,12 +63,12 @@ func _physics_process(delta):
 	if(!dialog_started and abs(get_node("../Player").global_position.x - global_position.x) < 600):
 		dialog_started = true
 		get_node("Dialog").visible = true
+		get_node("Dialog/Label").text = dialogue
 	
 	if(dialog_timer < 0 and dialog_timer + delta >= 0):
 		fight_started = true
 		get_node("TalkWall").layers = 0#layer 3 (1)(2)(4_
 		get_node("Dialog").visible = false
-		get_node("Dialog").text = dialogue
 	
 	if(hp <= 0):
 		killtimer -= delta

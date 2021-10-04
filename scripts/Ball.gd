@@ -22,7 +22,7 @@ func _process(delta):
 			body.collider.catch()
 			impactSound()
 			queue_free()
-		if(body.collider.name == "Enemy"):
+		if(body.collider.name == "Enemy" and team == 1):
 			body.collider.catch()
 			impactSound()
 			queue_free()
