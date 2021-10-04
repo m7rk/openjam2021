@@ -11,10 +11,14 @@ func _ready():
 	if(Progress.progress == 0):
 		trans_time += 15
 		get_node("IntroPlayer").play("Intro")
+	if(Progress.progress == 2):
+		get_node("Player").global_position.x += 10000
+	if(Progress.progress == 3):
+		get_node("Player").global_position.x += 20000
 	
 func triggerHitTime():
-	hittime = 0.03
-	Engine.time_scale = 0.05
+	hittime = 0.04
+	Engine.time_scale = 0.04
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

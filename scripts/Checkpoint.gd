@@ -14,9 +14,10 @@ func _ready():
 func _process(delta):
 	if(not active and abs(get_node("../../Player").global_position.x - global_position.x) < CHECKPOINT_DIST):
 		Progress.progress = int(name)
+		$AudioStreamPlayer2D.play()
 		active = true
 	if(not active):
 		if(frame == 2):
 			frame = 0
 	elif(frame == 0):
-			frame = 2
+			frame = 6

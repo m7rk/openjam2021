@@ -1,14 +1,14 @@
 [gd_resource type="SpriteFrames" load_steps=6 format=2]
 
-[ext_resource path="res://sit/frame0002.png" type="Texture" id=1]
-[ext_resource path="res://sit/frame0001.png" type="Texture" id=2]
-[ext_resource path="res://sit/frame0003.png" type="Texture" id=3]
-[ext_resource path="res://sit/frame0000.png" type="Texture" id=4]
-[ext_resource path="res://sit/frame0004.png" type="Texture" id=5]
+[ext_resource path="res://damageframes/frame0000.png" type="Texture" id=1]
+[ext_resource path="res://damageframes/frame0002.png" type="Texture" id=2]
+[ext_resource path="res://damageframes/frame0001.png" type="Texture" id=3]
+[ext_resource path="res://damageframes/frame0003.png" type="Texture" id=4]
+[ext_resource path="res://damageframes/frame0004.png" type="Texture" id=5]
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

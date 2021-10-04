@@ -68,6 +68,8 @@ const VEL_ANIM_THRESH = 20
 
 var moveEffectCtr = 0
 
+var hurtTime = 0
+
 func addMoveEffect(pos):
 	moveEffectCtr -= 1
 	if(moveEffectCtr < 0):
@@ -82,11 +84,15 @@ func hit(rev, knockback):
 	velocity.y = -200
 	velocity.x = rev * knockback
 	hp -= 1
+	get_node("HitHurt").play()
+	hurtTime = 0.04
 	get_node("../").triggerHitTime()
 	
 func catch():
 	hp -= 1
+	hurtTime = 0.04
 	get_node("../").triggerHitTime()
+	get_node("HitHurt").play()
 	# launch catch animation.
 
 func _ready():
@@ -141,6 +147,17 @@ func updateAnimator(rev):
 		setAnim("Idle",rev)
 
 func doInput(rev, delta):
+	
+	if(hurtTime > 0):
+		if(hurtTime == 0.04):
+			print("0")
+			get_node("Damage").frame = 4
+			print("--:")
+		print("F" + str(get_node("Damage").frame))
+		hurtTime -= delta
+		setAnim("Damage",rev)
+		return
+	
 	cooldown -= delta
 
 	if(cooldown < 0):
@@ -203,6 +220,7 @@ func spawnHitMarker(pos):
 
 func heal():
 	hp = min(4,hp + 1)
+	get_node("Heal").play()
 
 func pointHurt(rev,pos,kb):
 	var space_state = get_world_2d().direct_space_state
@@ -220,6 +238,7 @@ func pointHurt(rev,pos,kb):
 			else:
 				result.collider.hit(rev,kb)
 			spawnHitMarker(pos+ Vector2(0,i*-15))
+			get_node("BiteSound").play()
 			return true
 	return false
 

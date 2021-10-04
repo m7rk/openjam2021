@@ -15,4 +15,5 @@ func _ready():
 func _process(delta):
 	if(global_position.distance_to(get_node("../../Player").global_position) < 50):
 		queue_free()
+		
 		get_node("../../Player").heal()
