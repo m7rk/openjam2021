@@ -23,7 +23,7 @@ func _process(delta):
 	trans_time -= delta
 	hittime -= delta
 	
-	if(trans_time + delta > 2.1 and trans_time <= 2.1):
+	if(trans_time + delta > 2.1 and trans_time <= 2.1 and get_node("Player").hp > 0):
 		print("TRIG")
 		get_node("CanvasLayer/Display/AnimationPlayer").play("roundstart")
 	
