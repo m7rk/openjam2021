@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame0004.png-593e3f69c3ca61de672f327a6cdf7219.stex"
+path="res://.import/frame0004.png-336e5f49e01d664e43f9eedb95ae2cb0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://alt/Bite (alt)/frame0004.png"
-dest_files=[ "res://.import/frame0004.png-593e3f69c3ca61de672f327a6cdf7219.stex" ]
+source_file="res://Bite (alt) no background/frame0004.png"
+dest_files=[ "res://.import/frame0004.png-336e5f49e01d664e43f9eedb95ae2cb0.stex" ]
 
 [params]
 

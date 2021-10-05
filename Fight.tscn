@@ -641,10 +641,11 @@ __meta__ = {
 }
 
 [node name="Pounce" type="AnimatedSprite" parent="Enemy"]
+visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 49 )
-frame = 4
+frame = 13
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -652,10 +653,9 @@ __meta__ = {
 }
 
 [node name="Bite" type="AnimatedSprite" parent="Enemy"]
-position = Vector2( -24, -5 )
+position = Vector2( -20, -15 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 46 )
-frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -665,7 +665,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 48 )
-frame = 26
+frame = 9
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -673,10 +673,11 @@ __meta__ = {
 }
 
 [node name="Walk" type="AnimatedSprite" parent="Enemy"]
+visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 47 )
-frame = 12
+frame = 2
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -684,10 +685,11 @@ __meta__ = {
 }
 
 [node name="Reverse" type="AnimatedSprite" parent="Enemy"]
+visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 47 )
-frame = 12
+frame = 11
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -695,10 +697,11 @@ __meta__ = {
 }
 
 [node name="Projectile" type="AnimatedSprite" parent="Enemy"]
+visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 50 )
-frame = 2
+frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -706,6 +709,7 @@ __meta__ = {
 }
 
 [node name="TalkWall" type="StaticBody2D" parent="Enemy"]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/TalkWall"]
@@ -732,11 +736,12 @@ __meta__ = {
 }
 
 [node name="Damage" type="AnimatedSprite" parent="Enemy"]
+visible = false
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
-frame = 4
+frame = 3
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -744,12 +749,15 @@ __meta__ = {
 }
 
 [node name="HitHurt" type="AudioStreamPlayer2D" parent="Enemy"]
+visible = false
 stream = ExtResource( 38 )
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="Enemy"]
+visible = false
 stream = ExtResource( 36 )
 
 [node name="Heal" type="AudioStreamPlayer2D" parent="Enemy"]
+visible = false
 stream = ExtResource( 37 )
 
 [node name="Sit" type="AnimatedSprite" parent="Enemy"]
@@ -757,7 +765,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 40 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -801,7 +809,7 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 11
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -813,6 +821,7 @@ visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -822,7 +831,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 4
+frame = 15
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -834,7 +843,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 3
+frame = 6
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -846,7 +855,7 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 4
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -858,6 +867,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
+frame = 4
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -903,7 +913,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 7
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -915,7 +925,6 @@ visible = false
 position = Vector2( -330, 6 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 40 )
-frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -1235,7 +1244,6 @@ anims/Intro = SubResource( 10 )
 position = Vector2( 15000, -50 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 31 )
-frame = 1
 speed_scale = 4.0
 playing = true
 

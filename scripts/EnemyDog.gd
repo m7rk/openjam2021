@@ -28,7 +28,7 @@ func respawn():
 	
 	dialogue = "How are those bees\ntasting, eh?"
 	
-	get_node("Dialog").visible = true
+	get_node("Dialog").visible = false
 	get_node("TalkWall").visible = true
 	
 	get_node("HEAD").disabled = false
