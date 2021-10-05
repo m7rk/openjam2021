@@ -5,6 +5,7 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 onready var full = preload("res://ui/health.png")
+onready var fulle = preload("res://enemy health.png")
 onready var empty = preload("res://ui/unhealth.png")
 
 var t = 0
@@ -35,7 +36,7 @@ func _process(delta):
 		i.visible = (get_node("../Enemy").fight_started)
 
 		if (ctr < get_node("../Enemy").hp):
-			i.texture = full
+			i.texture = fulle
 		else:
 			i.texture = empty
 		ctr += 1

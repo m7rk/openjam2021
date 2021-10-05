@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -45,6 +45,11 @@
 [ext_resource path="res://ui/stamina_g.png" type="Texture" id=43]
 [ext_resource path="res://ui/stamina_u.png" type="Texture" id=44]
 [ext_resource path="res://sound/launch.wav" type="AudioStream" id=45]
+[ext_resource path="res://alt/Bite (alt)/bitealt.tres" type="SpriteFrames" id=46]
+[ext_resource path="res://alt/Walk Cycle Alt/walkalt.tres" type="SpriteFrames" id=47]
+[ext_resource path="res://alt/Idle Alt/idlealt.tres" type="SpriteFrames" id=48]
+[ext_resource path="res://alt/Pounce Alt/pouncealt.tres" type="SpriteFrames" id=49]
+[ext_resource path="res://alt/Projectile alt/projalt.tres" type="SpriteFrames" id=50]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
@@ -639,8 +644,7 @@ __meta__ = {
 [node name="Pounce" type="AnimatedSprite" parent="Enemy"]
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
-frames = ExtResource( 1 )
-frame = 4
+frames = ExtResource( 49 )
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -650,8 +654,7 @@ __meta__ = {
 [node name="Bite" type="AnimatedSprite" parent="Enemy"]
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
-frames = ExtResource( 13 )
-frame = 3
+frames = ExtResource( 46 )
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -660,8 +663,7 @@ __meta__ = {
 
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
-frames = ExtResource( 12 )
-frame = 1
+frames = ExtResource( 48 )
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -671,8 +673,7 @@ __meta__ = {
 [node name="Walk" type="AnimatedSprite" parent="Enemy"]
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
-frames = ExtResource( 14 )
-frame = 6
+frames = ExtResource( 47 )
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -682,8 +683,7 @@ __meta__ = {
 [node name="Reverse" type="AnimatedSprite" parent="Enemy"]
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
-frames = ExtResource( 15 )
-frame = 3
+frames = ExtResource( 47 )
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -693,7 +693,7 @@ __meta__ = {
 [node name="Projectile" type="AnimatedSprite" parent="Enemy"]
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
-frames = ExtResource( 16 )
+frames = ExtResource( 50 )
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -731,6 +731,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
+frame = 4
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -751,6 +752,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 40 )
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -794,6 +796,7 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -805,7 +808,7 @@ visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 2
+frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -815,7 +818,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 21
+frame = 10
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -827,7 +830,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 4
+frame = 6
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -839,7 +842,6 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 5
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -851,7 +853,6 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
-frame = 1
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -897,7 +898,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 8
+frame = 7
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -909,7 +910,7 @@ visible = false
 position = Vector2( -330, 6 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 40 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {

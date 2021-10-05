@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Jam 2021"
-run/main_scene="res://Fight.tscn"
+run/main_scene="res://Intro.tscn"
 config/icon="res://icon.png"
 
 [autoload]
