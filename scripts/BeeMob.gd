@@ -15,6 +15,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(get_node("../../").trans_time > 0):
+		$AudioStreamPlayer2D.volume_db = -100
+	else:
+		$AudioStreamPlayer2D.volume_db = -20
+	
 	var dist = abs(get_node("../../Player").global_position.x - global_position.x)
 	if(can_dive_bomb and dist < DIVE_BOMB_DIST):
 		global_position.x -= delta * 2 *  BEE_SPEED

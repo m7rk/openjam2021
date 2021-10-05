@@ -76,7 +76,9 @@ func _physics_process(delta):
 	if(hp <= 0):
 		killtimer -= delta
 		if(killtimer < 0 and Progress.progress < 3):
+			print("respawn")
 			respawn()
+			return
 		get_node("HEAD").disabled = true
 		get_node("BODY").disabled = true
 		cmds = []
