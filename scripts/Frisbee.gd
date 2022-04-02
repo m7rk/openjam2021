@@ -3,6 +3,7 @@ extends RigidBody2D
 
 # Declare member variables here. Examples:
 var WAKE_DIST = 800
+var team = -1
 
 # var b = "text"
 onready var impact = preload("res://Impact.tscn")
@@ -20,10 +21,10 @@ func impactSound():
 
 # fancy fadeout later
 func _on_body_entered(body):
-	if(body.name == "Player"):
+	if(body.name == "Player" and team == -1):
 		body.catch()
 		impactSound()
-	if(body.name == "Enemy"):
+	if(body.name == "Enemy" and team == 1):
 		body.catch()
 		impactSound()
 	queue_free()

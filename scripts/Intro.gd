@@ -16,5 +16,6 @@ func _process(delta):
 	if(t<=2):
 		t -= delta
 		get_node("tr").modulate = Color(1,1,1,2-t)
+		get_node("title").volume_db = (t-2)*40
 		if(t < 1):
 			get_tree().change_scene("res://Fight.tscn")

@@ -12,7 +12,10 @@ var t = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if(Progress.new_game >= 1):
+		get_node("NewGame").text = "NEW GAME "
+	for i in range(Progress.new_game):
+		get_node("NewGame").text += "+"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

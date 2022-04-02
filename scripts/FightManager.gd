@@ -7,6 +7,8 @@ var hittime = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	Engine.time_scale = 1 + (Progress.new_game * 0.3)
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
 	if(Progress.progress == 0):
 		trans_time += 15
@@ -44,7 +46,7 @@ func _process(delta):
 		get_node("CanvasLayer/Display/AnimationPlayer").play("roundstart")
 	
 	if(hittime <= 0):
-		Engine.time_scale = 1
+		Engine.time_scale = 1 + (Progress.new_game * 0.3)
 	
 	if(get_node("Player").hp <= 0):
 		if(trans_time < 0):

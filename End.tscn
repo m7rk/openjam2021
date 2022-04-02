@@ -4,7 +4,7 @@
 [ext_resource path="res://font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://music/Outro.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Transitioner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://End.gd" type="Script" id=5]
+[ext_resource path="res://scripts/End.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -14,8 +14,8 @@ margin_left = 528.319
 margin_top = 153.269
 margin_right = 729.319
 margin_bottom = 218.269
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "THE END"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -27,8 +27,8 @@ margin_top = 266.985
 margin_right = 1381.58
 margin_bottom = 467.985
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "DEMO ARGENTI - COMPOSER, SOUND DESIGN
 KRONDURE - ART
 M7RK - CODE"

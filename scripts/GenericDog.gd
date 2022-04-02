@@ -60,7 +60,7 @@ const FRISBEE_SPEED_Y = 150
 const BALL_SPEED_X = 100
 const BALL_SPEED_Y = 400
 
-const BACKUP_SPEED_RATIO = 0.7
+const BACKUP_SPEED_RATIO = 0.4
 
 const DASH_DETECTION_TIME = 0.1
 const DASH_VELOCITY = 2500
@@ -86,6 +86,9 @@ func addMoveEffect(pos):
 		moveEffectCtr = 3
 
 func hit(rev, knockback):
+	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown < POUNCE_ATTACK_LAUNCH):
+		return
+		# iframes baybee
 	velocity.y = -200
 	velocity.x = rev * knockback
 	hp -= 1
@@ -117,12 +120,14 @@ func checkForDash(rev):
 	if("right" in cmds and time_elapsed - last_r_depress < DASH_DETECTION_TIME):
 		attack_executed = "dash"
 		cooldown = DASH_COOLDOWN
+		get_node("Dash").play()
 		velocity.x += DASH_VELOCITY * rev
 		stamina -= DASH_STAMINA
 		
 	if("left" in cmds and time_elapsed - last_l_depress < DASH_DETECTION_TIME):
 		attack_executed = "dash"
 		cooldown = DASH_COOLDOWN
+		get_node("Dash").play()
 		velocity.x -= (DASH_VELOCITY / 2) * rev
 		stamina -= DASH_STAMINA
 
@@ -242,6 +247,11 @@ func pointHurt(rev,pos,kb):
 		var result = space_state.intersect_ray(pos - Vector2(rev * 10,0), pos + Vector2(0,i*-15), [], layer, true, true)
 
 		if(result):
+			if("Frisbee" in result.collider.name):
+				return
+			if("Ball" in result.collider.name):
+				return
+			
 			if("Mob" in result.collider.get_parent().name):
 				result.collider.get_parent().hit()
 			else:
@@ -279,6 +289,7 @@ func tryRangedAttack(rev, delta):
 		else:
 			v = frisbee.instance()
 			v.linear_velocity = Vector2(rev * FRISBEE_SPEED_X,-FRISBEE_SPEED_Y)
+			v.team = rev
 		get_node("../Projectiles").add_child(v)
 		
 		get_node("Launch").play()
@@ -300,14 +311,13 @@ func tryRangedAttack(rev, delta):
 	return false
 	
 func trySpecialAttack(rev,delta):
-	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown < POUNCE_ATTACK_LAUNCH):	
+	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_HIT and cooldown < POUNCE_ATTACK_LAUNCH):
 		if(not attack_consumed):
-			addMoveEffect(global_position)
-			attack_consumed = pointHurt(rev, global_position + Vector2(rev * 130,-15), POUNCE_ATTACK_KNOCKBACK)
-			if(not attack_consumed):
-				attack_consumed = pointHurt(rev, global_position + Vector2(rev * 130,40), POUNCE_ATTACK_KNOCKBACK)
+			for i in range(15):
+				attack_consumed = attack_consumed or pointHurt(rev, global_position + Vector2(rev * 130,-60 + (i * 15)), POUNCE_ATTACK_KNOCKBACK)
 	
 	if(attack_executed == "special" and cooldown > POUNCE_ATTACK_LAUNCH and cooldown - delta <= POUNCE_ATTACK_LAUNCH):
+		get_node("Launch").play()
 		velocity.x += POUNCE_ATTACK_VEL_BOOSTX * rev
 		velocity.y += POUNCE_ATTACK_VEL_BOOSTY
 		# hit them during the pounce frame

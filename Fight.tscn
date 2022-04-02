@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://pounce/pounce.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/PlayerDog.gd" type="Script" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://alt/Idle Alt/idlealt.tres" type="SpriteFrames" id=48]
 [ext_resource path="res://alt/Pounce Alt/pouncealt.tres" type="SpriteFrames" id=49]
 [ext_resource path="res://alt/Projectile alt/projalt.tres" type="SpriteFrames" id=50]
+[ext_resource path="res://sound/dash.ogg" type="AudioStream" id=51]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100000, 10 )
@@ -365,7 +366,6 @@ texture = ExtResource( 17 )
 position = Vector2( 423.643, 441.714 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 1
 playing = true
 script = ExtResource( 21 )
 
@@ -379,8 +379,8 @@ margin_top = -355.0
 margin_right = 529.0
 margin_bottom = -207.0
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Use W, S or Arrow
 Keys to move. Tap 'em
 twice to zoom, okay?"
@@ -392,6 +392,7 @@ __meta__ = {
 position = Vector2( 1008.3, 440.824 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -405,8 +406,8 @@ margin_top = -347.809
 margin_right = 709.213
 margin_bottom = -146.809
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Danger ahead! Press J,
 K, or L to see what
 you're capable of!"
@@ -418,6 +419,7 @@ __meta__ = {
 position = Vector2( 2010.21, 441.767 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -431,8 +433,8 @@ margin_top = -347.809
 margin_right = 709.213
 margin_bottom = -146.809
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Dont forget to like and
 subscribe if these tips
 were helpful. Okay?"
@@ -444,6 +446,7 @@ __meta__ = {
 position = Vector2( 4500, 441 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
@@ -457,8 +460,8 @@ margin_top = -347.809
 margin_right = 709.213
 margin_bottom = -146.809
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Rats are a huge
 problem round these 
 parts. Hit them twice!"
@@ -470,7 +473,7 @@ __meta__ = {
 position = Vector2( 9696.26, 443 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 5
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -484,8 +487,8 @@ margin_top = -347.809
 margin_right = 709.213
 margin_bottom = -146.809
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Aren't you glad I didn't
 put a boss here?"
 __meta__ = {
@@ -496,7 +499,7 @@ __meta__ = {
 position = Vector2( 16102.6, 442.363 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 5
+frame = 4
 playing = true
 script = ExtResource( 21 )
 
@@ -510,8 +513,8 @@ margin_top = -347.809
 margin_right = 709.213
 margin_bottom = -146.809
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Is it just me.... or do
 all these trees look
 EXACTLY THE SAME??"
@@ -523,7 +526,7 @@ __meta__ = {
 position = Vector2( 19629.1, 443.241 )
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 18 )
-frame = 4
+frame = 3
 playing = true
 script = ExtResource( 21 )
 
@@ -537,11 +540,11 @@ margin_top = -347.809
 margin_right = 709.213
 margin_bottom = -146.809
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Really sorry that the
-pounce ability is bad.
-Just don't press L."
+custom_fonts/font = ExtResource( 9 )
+text = "BLACK MIDI! BLACK MIDI!
+BLACK MIDI????????
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -549,6 +552,7 @@ __meta__ = {
 [node name="MoveEffects" type="Node2D" parent="."]
 
 [node name="Flags" type="Node2D" parent="."]
+position = Vector2( 0, 3 )
 
 [node name="2" type="AnimatedSprite" parent="Flags"]
 position = Vector2( 10000, 440 )
@@ -645,7 +649,7 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 49 )
-frame = 13
+frame = 6
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -656,6 +660,7 @@ __meta__ = {
 position = Vector2( -20, -15 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 46 )
+frame = 3
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -665,7 +670,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Enemy"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 48 )
-frame = 9
+frame = 6
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -677,7 +682,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 47 )
-frame = 2
+frame = 11
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -689,7 +694,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 47 )
-frame = 11
+frame = 7
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -701,7 +706,7 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 50 )
-frame = 5
+frame = 4
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -729,8 +734,8 @@ margin_top = -95.4831
 margin_right = 339.796
 margin_bottom = 105.517
 rect_scale = Vector2( 0.7, 0.7 )
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -741,7 +746,6 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
-frame = 3
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -751,6 +755,7 @@ __meta__ = {
 [node name="HitHurt" type="AudioStreamPlayer2D" parent="Enemy"]
 visible = false
 stream = ExtResource( 38 )
+volume_db = -10.0
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="Enemy"]
 visible = false
@@ -765,7 +770,6 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 40 )
-frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -774,9 +778,16 @@ __meta__ = {
 
 [node name="Launch" type="AudioStreamPlayer2D" parent="Enemy"]
 visible = false
-position = Vector2( -228.127, -371.939 )
 stream = ExtResource( 45 )
-volume_db = -5.0
+volume_db = -10.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="Enemy"]
+visible = false
+stream = ExtResource( 51 )
+volume_db = 10.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -809,7 +820,7 @@ visible = false
 position = Vector2( -7, -10 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
-frame = 2
+frame = 7
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -821,7 +832,7 @@ visible = false
 position = Vector2( -24, -5 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 13 )
-frame = 4
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -831,7 +842,7 @@ __meta__ = {
 [node name="Idle" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 12 )
-frame = 15
+frame = 12
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -843,7 +854,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 14 )
-frame = 6
+frame = 2
 speed_scale = 2.0
 playing = true
 __meta__ = {
@@ -855,7 +866,6 @@ visible = false
 position = Vector2( -15, -11 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 16 )
-frame = 1
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -867,7 +877,7 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -22, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 39 )
-frame = 4
+frame = 1
 speed_scale = 25.0
 playing = true
 __meta__ = {
@@ -879,6 +889,7 @@ visible = false
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -228.127, -371.939 )
 stream = ExtResource( 38 )
+volume_db = -10.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -903,7 +914,7 @@ __meta__ = {
 visible = false
 position = Vector2( -228.127, -371.939 )
 stream = ExtResource( 45 )
-volume_db = -5.0
+volume_db = -10.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -913,7 +924,7 @@ visible = false
 position = Vector2( -7, -9 )
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 15 )
-frame = 1
+frame = 8
 speed_scale = 1.5
 playing = true
 __meta__ = {
@@ -925,8 +936,18 @@ visible = false
 position = Vector2( -330, 6 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 40 )
+frame = 3
 speed_scale = 1.5
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="Player"]
+visible = false
+position = Vector2( -220, -371 )
+stream = ExtResource( 51 )
+volume_db = 10.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1184,8 +1205,8 @@ margin_left = 200.0
 margin_top = 200.0
 margin_right = 637.0
 margin_bottom = 278.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 9 )
 align = 1
 valign = 1
 __meta__ = {
@@ -1230,6 +1251,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NewGame" type="Label" parent="CanvasLayer"]
+margin_left = 14.0
+margin_top = 88.0
+margin_right = 54.0
+margin_bottom = 102.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Transitioner" parent="." instance=ExtResource( 11 )]
 
 [node name="IntroAnim" type="AnimatedSprite" parent="."]
@@ -1258,8 +1292,10 @@ script = ExtResource( 35 )
 
 [node name="Intro" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 34 )
+volume_db = -5.0
 
 [node name="Loop" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 33 )
+volume_db = -5.0
 
 [editable path="Transitioner"]
