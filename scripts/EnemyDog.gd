@@ -42,12 +42,9 @@ func _physics_process(delta):
 	move_time -= delta
 	if(move_time < 0):
 		var targ = int(rand_range(0,7))
-		if(targ == 0 or targ == 1):
+		if(targ == 0 or targ == 1 or targ == 2):
 			cmds = ["right"]
-			move_time = 0.5 + EASINESS
-		elif(targ == 2):
-			cmds = ["special"]
-			move_time = 0.1 + EASINESS
+			move_time = 0.5 
 		else:
 			cmds = []
 			move_time = 0.6 + EASINESS
@@ -57,7 +54,7 @@ func _physics_process(delta):
 	if(dist < 210):
 		cmds.append("close")
 	
-	if(dist > 400 && move_time > 0.4):
+	if(dist > 500 && move_time > 0.4):
 		cmds.append("ranged")
 	else:
 		cmds.erase("ranged")

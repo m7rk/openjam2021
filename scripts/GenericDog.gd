@@ -252,7 +252,6 @@ func pointHurt(rev,pos,kb):
 			if("Ball" in result.collider.name):
 				return
 			
-			print(result.collider.name)
 			if("Mob" in result.collider.get_parent().name):
 				result.collider.get_parent().hit()
 			else:

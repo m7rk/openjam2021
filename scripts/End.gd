@@ -11,7 +11,7 @@ func _ready():
 	Progress.loop_pos = 0
 	get_node("Transitioner/AnimationPlayer").play("endtrans")
 	
-func process(delta):
+func _process(delta):
 	t += delta
-	if(t > 15):
+	if(t > 20):
 		get_tree().change_scene("res://Intro.tscn")
